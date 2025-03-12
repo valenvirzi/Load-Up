@@ -1,0 +1,14 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 20rem;
+  --breakpoint-md: 28rem;
+  --breakpoint-lg: 48rem;
+  --breakpoint-xl: 64rem;
+  --breakpoint-2xl: 90rem;
+  --breakpoint-3xl: 120rem;
+}
