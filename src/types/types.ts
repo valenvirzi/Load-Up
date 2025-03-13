@@ -1,5 +1,6 @@
 export interface Link {
   title: string;
+  url: string;
   src: string;
   srcActive: string;
 }

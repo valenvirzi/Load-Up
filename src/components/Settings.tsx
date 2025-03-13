@@ -1,32 +1,10 @@
+import { useTranslation } from "react-i18next";
 import { useSettingsStore } from "../context/SettingsContext";
 import { DecimalSymbol, Language, MassUnit } from "../types/types";
 import SettingsItem from "./SettingsItem";
 
-const settings = {
-  decimalSymbol: {
-    label: "Decimal symbol",
-    options: [
-      { value: ".", label: "." },
-      { value: ",", label: "," },
-    ],
-  },
-  massUnit: {
-    label: "Mass unit of measure",
-    options: [
-      { value: "kg", label: "Kg" },
-      { value: "lb", label: "Lb" },
-    ],
-  },
-  language: {
-    label: "Language",
-    options: [
-      { value: "English", label: "English" },
-      { value: "Spanish", label: "Español" },
-    ],
-  },
-};
-
 const Settings: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const {
     decimalSymbol,
     language,
@@ -35,6 +13,30 @@ const Settings: React.FC = () => {
     setLanguage,
     setMassUnit,
   } = useSettingsStore();
+
+  const settings = {
+    decimalSymbol: {
+      label: t("decimalSymbol"),
+      options: [
+        { value: ".", label: "." },
+        { value: ",", label: "," },
+      ],
+    },
+    massUnit: {
+      label: t("massUnit"),
+      options: [
+        { value: "Kg", label: "Kg" },
+        { value: "Lb", label: "Lb" },
+      ],
+    },
+    language: {
+      label: t("language"),
+      options: [
+        { value: "en", label: t("english") },
+        { value: "es", label: t("spanish") },
+      ],
+    },
+  };
 
   const stateValues: Record<keyof typeof settings, string> = {
     decimalSymbol,
@@ -45,7 +47,10 @@ const Settings: React.FC = () => {
   const handleChange = (id: keyof typeof settings, value: string) => {
     if (id === "decimalSymbol") setDecimalSymbol(value as DecimalSymbol);
     if (id === "massUnit") setMassUnit(value as MassUnit);
-    if (id === "language") setLanguage(value as Language);
+    if (id === "language") {
+      setLanguage(value as Language);
+      i18n.changeLanguage(value.toLowerCase());
+    }
   };
 
   return (

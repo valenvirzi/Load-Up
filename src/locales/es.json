@@ -1,0 +1,14 @@
+{
+  "decimalSymbol": "Símbolo decimal",
+  "massUnit": "Unidad de medida de peso",
+  "kg": "Kilogramos",
+  "lb": "Libras",
+  "language": "Idioma",
+  "english": "Inglés",
+  "spanish": "Español",
+  "inventory": "Inventario",
+  "exercises": "Ejercicios",
+  "calculator": "Calculadora",
+  "timer": "Temporizador",
+  "settings": "Configuración"
+}
