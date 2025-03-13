@@ -13,7 +13,7 @@ const SettingsItem: React.FC<SettingsItemProps> = ({
         {label}
       </label>
       <select
-        className="cursor-pointer p-2"
+        className="cursor-pointer rounded border-none bg-gray-100 p-2"
         name={id}
         id={id}
         value={value}
