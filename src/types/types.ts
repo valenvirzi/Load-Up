@@ -27,3 +27,13 @@ export interface SettingsItemProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
+
+export enum InventoryComponent {
+  Plates = "plates",
+  Barbells = "barbells",
+}
+
+export interface InventoryComponentSelectorProps {
+  inventoryDisplayed: InventoryComponent;
+  setInventoryDisplayed: (display: InventoryComponent) => void;
+}
