@@ -63,7 +63,6 @@ const Settings: React.FC = () => {
     }
     if (id === "theme") {
       setTheme(value as Theme);
-      console.log(theme);
     }
   };
 
