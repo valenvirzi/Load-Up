@@ -25,12 +25,6 @@ const Footer: React.FC = () => {
       srcActive: "",
     },
     {
-      title: t("timer"),
-      url: "timer",
-      src: "./timer.svg",
-      srcActive: "",
-    },
-    {
       title: t("settings"),
       url: "settings",
       src: "./settings.svg",
