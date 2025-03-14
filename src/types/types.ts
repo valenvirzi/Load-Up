@@ -8,14 +8,17 @@ export interface Link {
 export type DecimalSymbol = "." | ",";
 export type MassUnit = "Kg" | "Lb";
 export type Language = "English" | "Español";
+export type Theme = "dark" | "light";
 
 export type SettingsState = {
   decimalSymbol: DecimalSymbol;
   massUnit: MassUnit;
   language: Language;
+  theme: Theme;
   setDecimalSymbol: (symbol: DecimalSymbol) => void;
   setMassUnit: (unit: MassUnit) => void;
   setLanguage: (language: Language) => void;
+  setTheme: (theme: Theme) => void;
 };
 
 export type Option = { value: string; label: string };

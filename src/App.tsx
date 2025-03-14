@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { useSettingsStore } from "./context/SettingsContext";
 
 function App() {
-  // TODO: https://chatgpt.com/c/67b78c78-349c-8007-9909-16819e88bdda
-
+  const { theme } = useSettingsStore();
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <div
+      className={`relative flex min-h-screen flex-col dark:bg-stone-900 dark:text-white ${theme}`}
+    >
       <Header />
       <Outlet />
       <Footer />

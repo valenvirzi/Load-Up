@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useSettingsStore } from "../context/SettingsContext";
-import { DecimalSymbol, Language, MassUnit } from "../types/types";
+import { DecimalSymbol, Language, MassUnit, Theme } from "../types/types";
 import SettingsItem from "./SettingsItem";
 
 const Settings: React.FC = () => {
@@ -9,9 +9,11 @@ const Settings: React.FC = () => {
     decimalSymbol,
     language,
     massUnit,
+    theme,
     setDecimalSymbol,
     setLanguage,
     setMassUnit,
+    setTheme,
   } = useSettingsStore();
 
   const settings = {
@@ -36,12 +38,20 @@ const Settings: React.FC = () => {
         { value: "es", label: t("spanish") },
       ],
     },
+    theme: {
+      label: t("theme"),
+      options: [
+        { value: "light", label: t("light") },
+        { value: "dark", label: t("dark") },
+      ],
+    },
   };
 
   const stateValues: Record<keyof typeof settings, string> = {
     decimalSymbol,
     massUnit,
     language,
+    theme,
   };
 
   const handleChange = (id: keyof typeof settings, value: string) => {
@@ -50,6 +60,10 @@ const Settings: React.FC = () => {
     if (id === "language") {
       setLanguage(value as Language);
       i18n.changeLanguage(value.toLowerCase());
+    }
+    if (id === "theme") {
+      setTheme(value as Theme);
+      console.log(theme);
     }
   };
 
