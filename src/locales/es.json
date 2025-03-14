@@ -15,5 +15,7 @@
   "timer": "Temporizador",
   "settings": "Configuración",
   "plates": "Discos",
-  "barbells": "Barras"
+  "barbells": "Barras",
+  "units": "unidades",
+  "createNewPlate": "Crear nuevo disco"
 }

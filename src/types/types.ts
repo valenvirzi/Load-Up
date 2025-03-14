@@ -31,6 +31,33 @@ export interface SettingsItemProps {
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
+export type Plate = {
+  id: string;
+  weight: number;
+  color: string;
+  availableAmount: number;
+};
+
+export type Barbell = {
+  id: string;
+  weight: number;
+  color: string;
+  type:
+    | "Olympic"
+    | "Trap"
+    | "Straight Curl"
+    | "EZ Curl"
+    | "Standard"
+    | "Swiss"
+    | "Roman"
+    | "W Curl";
+};
+
+export type InventoryStore = {
+  plates: Plate[];
+  barbells: Barbell[];
+};
+
 export enum InventoryComponent {
   Plates = "plates",
   Barbells = "barbells",

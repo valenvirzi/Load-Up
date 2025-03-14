@@ -15,5 +15,7 @@
   "timer": "Timer",
   "settings": "Settings",
   "plates": "Plates",
-  "barbells": "Barbells"
+  "barbells": "Barbells",
+  "units": "units",
+  "createNewPlate": "Create new plate"
 }
