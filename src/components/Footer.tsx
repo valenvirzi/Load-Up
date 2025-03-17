@@ -36,14 +36,8 @@ const Footer: React.FC = () => {
     <footer className="fixed right-1 bottom-6 left-1 z-10 rounded-full bg-gray-900 p-1 text-white md:right-3 md:left-3 dark:bg-white">
       <nav>
         <ul className="flex items-stretch justify-between gap-0.5">
-          {links.map((item) => (
-            <LinkItem
-              key={item.title}
-              title={item.title}
-              url={item.url}
-              src={item.src}
-              srcActive={item.srcActive}
-            />
+          {links.map((link) => (
+            <LinkItem key={link.title} link={link} />
           ))}
         </ul>
       </nav>

@@ -7,7 +7,7 @@ const PlatesInventory: React.FC = () => {
   const { plates } = useInventoryStore();
   return (
     <section className="flex flex-col">
-      <ul className="grid grid-cols-2 gap-4 p-4">
+      <ul className="grid grid-cols-3 gap-2 p-2">
         {plates.map((plate) => (
           <PlateInventoryItem key={plate.id} plate={plate} />
         ))}

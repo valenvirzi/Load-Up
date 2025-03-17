@@ -7,7 +7,7 @@ function App() {
   const { theme } = useSettingsStore();
   return (
     <div
-      className={`relative flex min-h-svh flex-col dark:bg-stone-900 dark:text-white ${theme}`}
+      className={`relative flex min-h-svh flex-col pb-24 dark:bg-stone-900 dark:text-white ${theme}`}
     >
       <Header />
       <Outlet />

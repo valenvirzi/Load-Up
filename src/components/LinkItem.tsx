@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { Link } from "../types/types";
+import { LinkItemProps } from "../types/types";
 
-const LinkItem: React.FC<Link> = (link) => {
+const LinkItem: React.FC<LinkItemProps> = ({ link }) => {
   return (
     <li className="self-center">
       <NavLink

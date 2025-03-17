@@ -5,6 +5,10 @@ export interface Link {
   srcActive: string;
 }
 
+export interface LinkItemProps {
+  link: Link;
+}
+
 export type DecimalSymbol = "." | ",";
 export type MassUnit = "Kg" | "Lb";
 export type Language = "English" | "Español";
