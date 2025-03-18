@@ -10,7 +10,7 @@ const PlatesInventory: React.FC = () => {
   const { plates } = useInventoryStore();
   const [selectedPlate, setSelectedPlate] = useState<Plate | null>(null);
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col gap-2">
       <ul className="grid grid-cols-3 gap-2 p-2">
         {plates.map((plate) => (
           <PlateInventoryItem

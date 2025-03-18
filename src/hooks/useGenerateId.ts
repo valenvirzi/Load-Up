@@ -1,12 +1,8 @@
-const useGenerateId = (
-  type: "plate" | string,
-  weight: number,
-  color: string,
-) => {
+const useGenerateId = (type: "plate" | string, weight: number) => {
   if (type === "plate") {
-    return `${type},${weight},${color}`.toLowerCase();
+    return `${type},${weight}`.toLowerCase();
   } else {
-    return `barbell,${type},${weight},${color}`.toLowerCase();
+    return `barbell,${type},${weight}`.toLowerCase();
   }
 };
 

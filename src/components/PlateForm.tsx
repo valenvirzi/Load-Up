@@ -22,6 +22,7 @@ const PlateForm: React.FC<PlateFormProps> = ({
 }) => {
   const { t } = useTranslation();
   const { updatePlate } = useInventoryStore();
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<Plate>({
     id: selectedPlate.id,
     weight: selectedPlate.weight,
@@ -39,8 +40,16 @@ const PlateForm: React.FC<PlateFormProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    updatePlate(selectedPlate.id, formData);
-    setSelectedPlate(null);
+    setError(null); // Clear previous errors
+
+    try {
+      updatePlate(selectedPlate.id, formData);
+      setSelectedPlate(null);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
+    }
   };
 
   return (
@@ -52,6 +61,8 @@ const PlateForm: React.FC<PlateFormProps> = ({
         onSubmit={handleSubmit}
       >
         <h2 className="text-xl">Edit Plate</h2>
+        {error && <p className="text-red-500">{error}</p>}
+
         <div className="flex flex-col gap-1">
           <div className="flex flex-col gap-1">
             <label htmlFor="weight">{t("weight")}</label>
