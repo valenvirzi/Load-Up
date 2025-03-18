@@ -6,15 +6,15 @@ import { InventoryComponent } from "../types/types";
 import PlatesInventory from "../components/PlatesInventory";
 import BarbellsInventory from "../components/BarbellsInventory";
 
-const inventoryComponents = {
-  [InventoryComponent.Plates]: <PlatesInventory />,
-  [InventoryComponent.Barbells]: <BarbellsInventory />,
-};
-
 const InventoryPage: React.FC = () => {
   const { t } = useTranslation();
   const [inventoryDisplayed, setInventoryDisplayed] =
     useState<InventoryComponent>(InventoryComponent.Plates);
+
+  const inventoryComponents = {
+    [InventoryComponent.Plates]: <PlatesInventory />,
+    [InventoryComponent.Barbells]: <BarbellsInventory />,
+  };
   return (
     <main className="flex flex-col items-stretch p-2">
       <div className="p-2">

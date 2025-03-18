@@ -8,7 +8,7 @@ export const useInventoryStore = create(
     (set) => ({
       plates: [
         {
-          id: "plate,20,gray-500",
+          id: "plate,20,bg-gray-500",
           weight: 20,
           color: "bg-gray-500",
           availableAmount: 8,
@@ -46,9 +46,9 @@ export const useInventoryStore = create(
       ],
       barbells: [
         {
-          id: "barbell,standard,1.25,zinc-700",
+          id: "barbell,standard,1.25,bg-zinc-700",
           weight: 20,
-          color: "zinc-700",
+          color: "bg-zinc-700",
           type: "Standard",
         },
       ],
@@ -65,11 +65,9 @@ export const useInventoryStore = create(
           plates: state.plates.filter((p) => p.id !== id),
         })),
 
-      updatePlate: (updatedPlate: Plate) =>
+      updatePlate: (previousId: string, updatedPlate: Plate) =>
         set((state) => {
-          const plateIndex = state.plates.findIndex(
-            (p) => p.id === updatedPlate.id,
-          );
+          const plateIndex = state.plates.findIndex((p) => p.id === previousId);
           if (plateIndex === -1) return state;
           // The plate you are trying to update doesn't exist.
 
@@ -80,7 +78,7 @@ export const useInventoryStore = create(
             oldPlate.color !== newPlate.color ||
             oldPlate.weight !== newPlate.weight;
 
-          // If neither the plate color nor the plate weight changes (aka just the availableAmount changes), update the plate without changing the ID. Otherwise, generate a new ID.
+          // If neither the plate color nor the plate weight changes (aka just the availableAmount changes / everything stays the same), update the plate without changing the ID. Otherwise, generate a new ID.
           if (!shouldIdChange) {
             const updatedPlates = [...state.plates];
             updatedPlates[plateIndex] = { ...newPlate };
@@ -90,7 +88,7 @@ export const useInventoryStore = create(
 
           const newId = useGenerateId("plate", newPlate.weight, newPlate.color);
           if (
-            newId !== updatedPlate.id &&
+            newId !== previousId &&
             state.plates.some((p) => p.id === newId)
           ) {
             return state;
@@ -119,10 +117,10 @@ export const useInventoryStore = create(
           barbells: state.barbells.filter((b) => b.id !== id),
         })),
 
-      updateBarbell: (updatedBarbell: Barbell) =>
+      updateBarbell: (previousId: string, updatedBarbell: Barbell) =>
         set((state) => {
           const barbellIndex = state.barbells.findIndex(
-            (b) => b.id === updatedBarbell.id,
+            (b) => b.id === previousId,
           );
           if (barbellIndex === -1) return state;
           // The barbell you are trying to update doesn't exist.
@@ -135,12 +133,12 @@ export const useInventoryStore = create(
             newBarbell.weight,
             newBarbell.color,
           );
-          if (newId === updatedBarbell.id) {
+          if (newId === previousId) {
             return state;
             // None of the barbell characteristics have changed.
           }
           if (
-            newId !== updatedBarbell.id &&
+            newId !== previousId &&
             state.barbells.some((b) => b.id === newId)
           ) {
             return state;
