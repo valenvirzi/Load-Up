@@ -61,10 +61,10 @@ export type InventoryStore = {
   plates: Plate[];
   barbells: Barbell[];
   createPlate: (plate: Omit<Plate, "id">) => void;
-  removePlate: (id: Plate["id"]) => void;
+  deletePlate: (id: Plate["id"]) => void;
   updatePlate: (previousId: string, plate: Plate) => void;
   createBarbell: (barbell: Omit<Barbell, "id">) => void;
-  removeBarbell: (id: Barbell["id"]) => void;
+  deleteBarbell: (id: Barbell["id"]) => void;
   updateBarbell: (previousId: string, barbell: Barbell) => void;
 };
 

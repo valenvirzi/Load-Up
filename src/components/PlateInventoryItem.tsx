@@ -15,7 +15,7 @@ const PlateInventoryItem: React.FC<PlateInventoryItemProps> = ({
   return (
     <li className="aspect-square">
       <button
-        className={`${plate.color} flex size-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-full p-1`}
+        className={`${plate.color} flex size-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-full p-1 text-white`}
         type="button"
         onClick={() => setSelectedPlate(plate)}
       >

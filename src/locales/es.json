@@ -16,6 +16,15 @@
   "settings": "Configuración",
   "plates": "Discos",
   "barbells": "Barras",
-  "units": "unidades",
-  "createNewPlate": "Crear nuevo disco"
+  "addNewPlate": "Añadir nuevo disco",
+  "createPlate": "Crear disco",
+  "editPlate": "Editar disco",
+  "weight": "Peso",
+  "color": "Color",
+  "availableAmount": "Cantidad disponible",
+  "cancel": "Cancelar",
+  "update": "Actualizar",
+  "add": "Añadir",
+  "confirmDelete": "¿Está seguro que desea eliminarlo?",
+  "alreadyPlate": "Ya existe un disco de ese peso"
 }

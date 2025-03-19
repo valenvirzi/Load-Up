@@ -8,6 +8,7 @@ import PlateForm from "./PlateForm";
 const PlatesInventory: React.FC = () => {
   const { t } = useTranslation();
   const { plates } = useInventoryStore();
+  const [create, setCreate] = useState<boolean>(false);
   const [selectedPlate, setSelectedPlate] = useState<Plate | null>(null);
   return (
     <section className="flex flex-col gap-2">
@@ -20,13 +21,27 @@ const PlatesInventory: React.FC = () => {
           />
         ))}
       </ul>
-      <button className="rounded-full bg-violet-800 p-3" type="button">
-        <span>{t("createNewPlate")}</span>
+      <button
+        className="cursor-pointer rounded-full bg-violet-800 p-3 text-white"
+        onClick={() => {
+          setCreate(true);
+          setSelectedPlate({
+            id: "",
+            weight: 0,
+            color: "bg-gray-500",
+            availableAmount: 2,
+          });
+        }}
+        type="button"
+      >
+        <span>{t("addNewPlate")}</span>
       </button>
       {selectedPlate === null ? (
         <></>
       ) : (
         <PlateForm
+          create={create}
+          setCreate={setCreate}
           selectedPlate={selectedPlate}
           setSelectedPlate={setSelectedPlate}
         />

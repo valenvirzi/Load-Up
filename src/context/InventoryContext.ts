@@ -56,11 +56,13 @@ export const useInventoryStore = create(
       createPlate: (newPlate: Omit<Plate, "id">) =>
         set((state) => {
           const id = useGenerateId("plate", newPlate.weight);
-          if (state.plates.some((p) => p.id === id)) return state;
+          if (state.plates.some((p) => p.id === id)) {
+            throw new Error("alreadyPlate");
+          }
           return { plates: [...state.plates, { ...newPlate, id }] };
         }),
 
-      removePlate: (id: string) =>
+      deletePlate: (id: string) =>
         set((state) => ({
           plates: state.plates.filter((p) => p.id !== id),
         })),
@@ -90,7 +92,7 @@ export const useInventoryStore = create(
             newId !== previousId &&
             state.plates.some((p) => p.id === newId)
           ) {
-            throw new Error("A plate of that weight already exists.");
+            throw new Error("alreadyPlate");
             // A plate with these characteristics already exists.
           }
 
@@ -107,7 +109,7 @@ export const useInventoryStore = create(
           return { barbells: [...state.barbells, { ...newBarbell, id }] };
         }),
 
-      removeBarbell: (id: string) =>
+      deleteBarbell: (id: string) =>
         set((state) => ({
           barbells: state.barbells.filter((b) => b.id !== id),
         })),
