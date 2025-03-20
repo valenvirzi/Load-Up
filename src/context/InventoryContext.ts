@@ -59,7 +59,11 @@ export const useInventoryStore = create(
           if (state.plates.some((p) => p.id === id)) {
             throw new Error("alreadyPlate");
           }
-          return { plates: [...state.plates, { ...newPlate, id }] };
+          return {
+            plates: [...state.plates, { ...newPlate, id }].sort(
+              (a, b) => b.weight - a.weight,
+            ),
+          };
         }),
 
       deletePlate: (id: string) =>
@@ -84,7 +88,9 @@ export const useInventoryStore = create(
             const updatedPlates = [...state.plates];
             updatedPlates[plateIndex] = { ...newPlate };
 
-            return { plates: updatedPlates };
+            return {
+              plates: updatedPlates.sort((a, b) => b.weight - a.weight),
+            };
           }
 
           const newId = useGenerateId("plate", newPlate.weight);
@@ -99,14 +105,21 @@ export const useInventoryStore = create(
           const updatedPlates = [...state.plates];
           updatedPlates[plateIndex] = { ...newPlate, id: newId };
 
-          return { plates: updatedPlates };
+          return { plates: updatedPlates.sort((a, b) => b.weight - a.weight) };
         }),
 
       createBarbell: (newBarbell: Omit<Barbell, "id">) =>
         set((state) => {
           const id = useGenerateId(newBarbell.type, newBarbell.weight);
-          if (state.barbells.some((b) => b.id === id)) return state;
-          return { barbells: [...state.barbells, { ...newBarbell, id }] };
+          if (state.barbells.some((b) => b.id === id)) {
+            return state;
+          } else {
+            return {
+              barbells: [...state.barbells, { ...newBarbell, id }].sort(
+                (a, b) => b.weight - a.weight,
+              ),
+            };
+          }
         }),
 
       deleteBarbell: (id: string) =>
@@ -141,7 +154,9 @@ export const useInventoryStore = create(
           const updatedBarbells = [...state.barbells];
           updatedBarbells[barbellIndex] = { ...newBarbell, id: newId };
 
-          return { barbells: updatedBarbells };
+          return {
+            barbells: updatedBarbells.sort((a, b) => b.weight - a.weight),
+          };
         }),
     }),
     { name: "LoadUpInventory" },

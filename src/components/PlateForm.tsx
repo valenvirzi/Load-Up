@@ -37,7 +37,22 @@ const PlateForm: React.FC<PlateFormProps> = ({
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+
+    // Permitir valores vacíos y evitar ceros a la izquierda
+    if (value === "" || /^[1-9]\d*(\.\d+)?$/.test(value)) {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    // Si el input queda vacío al perder el foco, lo establece en 0
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value === "" ? 0 : Number(value),
+    }));
   };
 
   const handleColorChange = (color: string) => {
@@ -62,9 +77,26 @@ const PlateForm: React.FC<PlateFormProps> = ({
     e.preventDefault();
     setError(null); // Clear previous errors
 
+    const weight = Number(formData.weight);
+    const availableAmount = Number(formData.availableAmount);
+
+    // Validation
+    if (isNaN(weight) || weight <= 0) {
+      setError("weightAboveZero");
+      return;
+    }
+    if (isNaN(availableAmount) || availableAmount < 2) {
+      setError("minAmountTwo");
+      return;
+    }
+    if (!PLATE_COLORS.includes(formData.color)) {
+      setError("colorNotValid");
+      return;
+    }
+
     if (create) {
       try {
-        createPlate(formData);
+        createPlate({ ...formData, weight, availableAmount });
         setSelectedPlate(null);
         setCreate(false);
       } catch (err) {
@@ -74,7 +106,7 @@ const PlateForm: React.FC<PlateFormProps> = ({
       }
     } else {
       try {
-        updatePlate(selectedPlate.id, formData);
+        updatePlate(selectedPlate.id, { ...formData, weight, availableAmount });
         setSelectedPlate(null);
       } catch (err) {
         if (err instanceof Error) {
@@ -120,11 +152,12 @@ const PlateForm: React.FC<PlateFormProps> = ({
                 className="w-1/2 rounded bg-gray-100 p-2 dark:bg-zinc-700"
                 type="number"
                 name="weight"
-                min={massUnit === "Kg" ? 0.25 : 1.25}
-                step={massUnit === "Kg" ? 0.25 : 1.25}
+                min={0}
+                step={0.1}
                 id="weight"
                 value={formData.weight}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
               <span className="text-black/65 dark:text-white/65">
                 {massUnit}
@@ -163,6 +196,7 @@ const PlateForm: React.FC<PlateFormProps> = ({
                 id="availableAmount"
                 value={formData.availableAmount}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
               <span className="text-black/65 dark:text-white/65">u.</span>
             </div>
