@@ -39,7 +39,7 @@ const PlateForm: React.FC<PlateFormProps> = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    // Permitir valores vacíos y evitar ceros a la izquierda
+    // Allow empty values, but avoid zeros to the left
     if (value === "" || /^[1-9]\d*(\.\d+)?$/.test(value)) {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -48,7 +48,7 @@ const PlateForm: React.FC<PlateFormProps> = ({
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    // Si el input queda vacío al perder el foco, lo establece en 0
+    // If input empty when no longer focused, then value = 0
     setFormData((prev) => ({
       ...prev,
       [name]: value === "" ? 0 : Number(value),
@@ -153,7 +153,7 @@ const PlateForm: React.FC<PlateFormProps> = ({
                 type="number"
                 name="weight"
                 min={0}
-                step={0.1}
+                step={0.05}
                 id="weight"
                 value={formData.weight}
                 onChange={handleChange}

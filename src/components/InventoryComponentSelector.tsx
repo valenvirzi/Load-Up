@@ -20,7 +20,7 @@ const InventoryComponentSelector: React.FC<InventoryComponentSelectorProps> = ({
           <button
             type="button"
             onClick={() => setInventoryDisplayed(value)}
-            className={`w-full cursor-pointer border-b-2 border-transparent p-2 transition-all duration-300 ease-in-out ${inventoryDisplayed === value ? "border-violet-800" : ""}`}
+            className={`w-full cursor-pointer border-b-4 border-transparent p-2 transition-all duration-300 ease-in-out ${inventoryDisplayed === value ? "border-violet-800" : ""}`}
           >
             <span>{label}</span>
           </button>
