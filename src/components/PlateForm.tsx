@@ -40,7 +40,7 @@ const PlateForm: React.FC<PlateFormProps> = ({
     const { name, value } = e.target;
 
     // Allow empty values, but avoid zeros to the left
-    if (value === "" || /^[1-9]\d*(\.\d+)?$/.test(value)) {
+    if (value === "" || /^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };

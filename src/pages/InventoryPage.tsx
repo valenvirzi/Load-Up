@@ -24,7 +24,7 @@ const InventoryPage: React.FC = () => {
         inventoryDisplayed={inventoryDisplayed}
         setInventoryDisplayed={setInventoryDisplayed}
       />
-      <div>{inventoryComponents[inventoryDisplayed]}</div>
+      {inventoryComponents[inventoryDisplayed]}
     </main>
   );
 };
