@@ -108,6 +108,7 @@ export const useInventoryStore = create(
           return { plates: updatedPlates.sort((a, b) => b.weight - a.weight) };
         }),
 
+      // TODO: Throw the corresponding errors for each case just like the Plates functions do
       createBarbell: (newBarbell: Omit<Barbell, "id">) =>
         set((state) => {
           const id = useGenerateId(newBarbell.type, newBarbell.weight);

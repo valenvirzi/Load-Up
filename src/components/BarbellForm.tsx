@@ -12,11 +12,11 @@ interface BarbellFormProps {
 }
 
 const BARBELL_TYPES = [
-  "Olympic",
-  "Trap",
-  "Straight Curl",
-  "EZ Curl",
   "Standard",
+  "Olympic",
+  "Straight Curl",
+  "Trap",
+  "EZ Curl",
   "Swiss",
   "Roman",
   "W Curl",
@@ -47,7 +47,14 @@ const BarbellForm: React.FC<BarbellFormProps> = ({
     type: selectedBarbell.type,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      type: e.target.value as Barbell["type"],
+    }));
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     // Allow empty values, but avoid zeros to the left
@@ -163,7 +170,7 @@ const BarbellForm: React.FC<BarbellFormProps> = ({
                 step={0.05}
                 id="weight"
                 value={formData.weight}
-                onChange={handleChange}
+                onChange={handleInputChange}
                 onBlur={handleBlur}
               />
               <span className="text-black/65 dark:text-white/65">
@@ -198,6 +205,7 @@ const BarbellForm: React.FC<BarbellFormProps> = ({
                 className="cursor-pointer rounded border-none bg-gray-100 p-2 dark:bg-zinc-700"
                 name="type"
                 id="type"
+                onChange={handleTypeChange}
                 value={formData.type}
               >
                 {BARBELL_TYPES.map((type) => (

@@ -3,20 +3,10 @@ import { useInventoryStore } from "../context/InventoryContext";
 import { useState } from "react";
 import { Barbell } from "../types/types";
 import BarbellForm from "./BarbellForm";
-import { useSettingsStore } from "../context/SettingsContext";
-
-// const BARBELLS_IMG = [
-//   "./roman-barbell-half.png",
-//   "./ez-curl-barbell-half.png",
-//   "./straight-barbell-half.png",
-//   "./swiss-barbell-half.png",
-//   "./trap-barbell-half.png",
-//   "./w-curl-barbell-half.png",
-// ];
+import BarbellInventoryItem from "./BarbellInventoryItem";
 
 const BarbellsInventory: React.FC = () => {
   const { t } = useTranslation();
-  const { massUnit } = useSettingsStore();
   const { barbells } = useInventoryStore();
   const [create, setCreate] = useState<boolean>(false);
   const [selectedBarbell, setSelectedBarbell] = useState<Barbell | null>(null);
@@ -39,18 +29,12 @@ const BarbellsInventory: React.FC = () => {
       </button>
       <ul>
         {barbells.map((barbell) => (
-          <li key={barbell.id}>
-            <span>20{massUnit}</span>
-            <hr className="mx-auto w-2/3 border-b border-gray-400/25" />
-          </li>
+          <BarbellInventoryItem
+            key={barbell.id}
+            barbell={barbell}
+            setSelectedBarbell={setSelectedBarbell}
+          />
         ))}
-        {/* {BARBELLS_IMG.map((barbell) => (
-          <li key={barbell}>
-            <img src={barbell} alt="Barbell" />
-            <span>20{massUnit}</span>
-            <hr className="mx-auto w-2/3 border-b border-gray-400/25" />
-          </li>
-        ))} */}
       </ul>
 
       {selectedBarbell === null ? (

@@ -47,11 +47,11 @@ export type Barbell = {
   weight: number;
   color: string;
   type:
-    | "Olympic"
-    | "Trap"
-    | "Straight Curl"
-    | "EZ Curl"
     | "Standard"
+    | "Olympic"
+    | "Straight Curl"
+    | "Trap"
+    | "EZ Curl"
     | "Swiss"
     | "Roman"
     | "W Curl";
