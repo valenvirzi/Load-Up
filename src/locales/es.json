@@ -29,5 +29,9 @@
   "alreadyPlate": "Ya existe un disco de ese peso",
   "weightAboveZero": "El peso del disco debe ser mayor a 0",
   "minAmountTwo": "La cantidad disponible de discos debe ser de al menos 2 unidades",
-  "colorNotValid": "El color seleccionado no es válido"
+  "colorNotValid": "El color seleccionado no es válido",
+  "addNewBarbell": "Añadir nueva barra",
+  "type": "Tipo",
+  "createBarbell": "Crear barra",
+  "editBarbell": "Editar barra"
 }

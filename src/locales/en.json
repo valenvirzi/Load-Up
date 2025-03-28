@@ -29,5 +29,9 @@
   "alreadyPlate": "A plate of that weight already exists",
   "weightAboveZero": "Weight must be greater than 0",
   "minAmountTwo": "The available amount of plates must be at least 2",
-  "colorNotValid": "Invalid color selected"
+  "colorNotValid": "Invalid color selected",
+  "addNewBarbell": "Add new barbell",
+  "type": "Type",
+  "createBarbell": "Create barbell",
+  "editBarbell": "Edit barbell"
 }
