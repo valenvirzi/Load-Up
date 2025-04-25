@@ -33,5 +33,6 @@
   "addNewBarbell": "Añadir nueva barra",
   "type": "Tipo",
   "createBarbell": "Crear barra",
-  "editBarbell": "Editar barra"
+  "editBarbell": "Editar barra",
+  "selectBarbell": "Elige una barra"
 }

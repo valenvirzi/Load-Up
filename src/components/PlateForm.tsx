@@ -117,12 +117,16 @@ const PlateForm: React.FC<PlateFormProps> = ({
   };
 
   return (
-    <div className="absolute inset-0 flex flex-col items-center bg-black/30">
+    <div
+      onClick={handleCancel}
+      className="absolute inset-0 flex flex-col items-center bg-black/30"
+    >
       <form
         className="absolute top-1/12 flex w-10/12 flex-col gap-4 rounded bg-white p-3 text-black dark:bg-stone-900 dark:text-white"
         name="plateForm"
         id="plateForm"
         onSubmit={handleSubmit}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between">
           <h2 className="text-2xl">

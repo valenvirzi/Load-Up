@@ -33,5 +33,6 @@
   "addNewBarbell": "Add new barbell",
   "type": "Type",
   "createBarbell": "Create barbell",
-  "editBarbell": "Edit barbell"
+  "editBarbell": "Edit barbell",
+  "selectBarbell": "Select a barbell"
 }

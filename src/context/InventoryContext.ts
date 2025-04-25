@@ -71,7 +71,7 @@ export const useInventoryStore = create(
           plates: state.plates.filter((p) => p.id !== id),
         })),
 
-      // TODO: Throw errors on each edge case. Right now it only does when the updated plate has the same weight as an existing one.
+      // TODO: Throw errors on each edge case. Right now it only does so when the updated plate has the same weight as an existing one.
       updatePlate: (previousId: string, updatedPlate: Plate) =>
         set((state) => {
           const plateIndex = state.plates.findIndex((p) => p.id === previousId);
