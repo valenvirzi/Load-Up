@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Exercise, useExercisesStore } from "../context/ExercisesContext";
 import { useState } from "react";
-import getWorkoutDate from "../hooks/useGetWorkoutDate";
+import getWorkoutDate from "../utils/getWorkoutDate";
 import { useSettingsStore } from "../context/SettingsContext";
 import calculate1RM from "../utils/calculate1RM";
 

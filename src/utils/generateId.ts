@@ -1,4 +1,4 @@
-const useGenerateId = (type: "plate" | string, weight: number) => {
+const generateId = (type: "plate" | string, weight: number) => {
   if (type === "plate") {
     return `${type},${weight}`.toLowerCase();
   } else {
@@ -6,4 +6,4 @@ const useGenerateId = (type: "plate" | string, weight: number) => {
   }
 };
 
-export default useGenerateId;
+export default generateId;

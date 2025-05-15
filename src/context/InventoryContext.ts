@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import useGenerateId from "../hooks/useGenerateId";
+import generateId from "../utils/generateId";
 import { Barbell, InventoryStore, Plate } from "../types/types";
 
 export const useInventoryStore = create(
@@ -55,7 +55,7 @@ export const useInventoryStore = create(
 
       createPlate: (newPlate: Omit<Plate, "id">) =>
         set((state) => {
-          const id = useGenerateId("plate", newPlate.weight);
+          const id = generateId("plate", newPlate.weight);
           if (state.plates.some((p) => p.id === id)) {
             throw new Error("alreadyPlate");
           }
@@ -93,7 +93,7 @@ export const useInventoryStore = create(
             };
           }
 
-          const newId = useGenerateId("plate", newPlate.weight);
+          const newId = generateId("plate", newPlate.weight);
           if (
             newId !== previousId &&
             state.plates.some((p) => p.id === newId)
@@ -111,7 +111,7 @@ export const useInventoryStore = create(
       // TODO: Throw the corresponding errors for each case just like the Plates functions do
       createBarbell: (newBarbell: Omit<Barbell, "id">) =>
         set((state) => {
-          const id = useGenerateId(newBarbell.type, newBarbell.weight);
+          const id = generateId(newBarbell.type, newBarbell.weight);
           if (state.barbells.some((b) => b.id === id)) {
             return state;
           } else {
@@ -139,7 +139,7 @@ export const useInventoryStore = create(
           const oldBarbell = state.barbells[barbellIndex];
           const newBarbell = { ...oldBarbell, ...updatedBarbell };
 
-          const newId = useGenerateId(newBarbell.type, newBarbell.weight);
+          const newId = generateId(newBarbell.type, newBarbell.weight);
           if (newId === previousId) {
             return state;
             // None of the barbell characteristics have changed.
