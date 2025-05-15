@@ -8,6 +8,8 @@ import PlateForm from "./PlateForm";
 const PlatesInventory: React.FC = () => {
   const { t } = useTranslation();
   const { plates } = useInventoryStore();
+  // Console.Log
+  console.log(plates);
   const [create, setCreate] = useState<boolean>(false);
   const [selectedPlate, setSelectedPlate] = useState<Plate | null>(null);
   return (
