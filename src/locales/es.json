@@ -47,5 +47,8 @@
   "lastTime": "Última vez",
   "createExercise": "Crear ejercicio",
   "editExercise": "Editar ejercicio",
-  "name": "Nombre"
+  "name": "Nombre",
+  "enterDesiredWeight": "Ingresa el peso a calcular",
+  "calculatedWeight": "Peso calculado",
+  "weightGreaterThanBarbell": "El peso debe ser mayor al de la barra"
 }

@@ -31,8 +31,8 @@ const BarbellInventoryItem: React.FC<BarbellInventoryItemProps> = ({
         onClick={() => setSelectedBarbell(barbell)}
       >
         <img src={BARBELLS_IMG[barbell.type]} alt={`${barbell.type} barbell`} />
-        <div className="flex w-full justify-between">
-          <h3>{barbell.type}</h3>
+        <div className="flex w-full justify-between text-lg">
+          <h3 className="">{barbell.type}</h3>
           <span>
             {barbell.weight}
             {massUnit}

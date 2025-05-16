@@ -20,13 +20,10 @@ const CalculatorPage: React.FC = () => {
   const [currentExercise, setCurrentExercise] = useState<Exercise>(
     exercises[0],
   );
-  const [renderedPlates, setRenderedPlates] = useState<Plate[]>([
-    { id: "1", weight: 25, color: "bg-gray-500", availableAmount: 1 },
-    { id: "2", weight: 10, color: "bg-gray-500", availableAmount: 1 },
-    { id: "4", weight: 2, color: "bg-gray-500", availableAmount: 1 },
-  ]);
+  const [renderedPlates, setRenderedPlates] = useState<Plate[]>([]);
   const [desiredWeight, setDesiredWeight] = useState<string>("");
   const [totalWeight, setTotalWeight] = useState<number>(0);
+  const [error, setError] = useState<string | null>(null);
 
   const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -41,7 +38,21 @@ const CalculatorPage: React.FC = () => {
     const value = e.target.value;
     // Convert to number or reset to 0 on blur if empty
     if (value === "") setDesiredWeight("0");
-    console.log("blur");
+  };
+
+  const handleSubmitWeight = () => {
+    setError(null);
+    if (Number(desiredWeight) < barbellDisplayed.weight) {
+      setError("weightGreaterThanBarbell");
+      return;
+    }
+    setRenderedPlates(
+      calculateLoadedBarbell(
+        Number(desiredWeight),
+        barbellDisplayed.weight,
+        plates,
+      ),
+    );
   };
 
   useEffect(() => {
@@ -118,7 +129,7 @@ const CalculatorPage: React.FC = () => {
       </section>
       <section className="flex flex-col px-1">
         {/* TODO: Make the calculating logic to later render the loaded bar with the corresponding weight given the input weight and the available plates */}
-        <div className="relative mt-16 flex h-6 w-11/12 items-center gap-1 rounded-sm bg-slate-400 text-white">
+        <div className="relative mt-16 flex h-6 items-center gap-1 rounded-sm bg-slate-400 text-white">
           <div className="absolute flex items-center justify-center rounded-sm bg-slate-400 p-3">
             <span className="font-medium">{barbellDisplayed.weight}</span>
           </div>
@@ -142,14 +153,14 @@ const CalculatorPage: React.FC = () => {
         </div>
       </section>
       <div className="relative top-20 self-center">
-        <p>
-          {t("totalWeight")}: {totalWeight}
+        <p className="text-xl">
+          {t("calculatedWeight")}: {totalWeight}
           {massUnit}
         </p>
       </div>
       <section className="relative top-20 flex w-full flex-col items-stretch gap-1 px-2">
-        <label htmlFor="desiredWeight">
-          {t("enterDesiredWeight")} ({massUnit})
+        <label className="text-sm" htmlFor="desiredWeight">
+          {t("enterDesiredWeight")} ({massUnit}):
         </label>
         <div className="flex items-stretch">
           <input
@@ -165,23 +176,24 @@ const CalculatorPage: React.FC = () => {
             value={desiredWeight}
             onChange={handleNumberChange}
             onBlur={handleNumberBlur}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                handleSubmitWeight();
+              }
+            }}
           />
           <button
-            className="cursor-pointer rounded-r bg-gray-50 p-2 hover:bg-gray-100/85"
+            className="cursor-pointer rounded-r bg-violet-800 p-2 hover:bg-violet-800/85"
             type="button"
             onClick={() => {
-              setRenderedPlates(
-                calculateLoadedBarbell(
-                  Number(desiredWeight),
-                  barbellDisplayed.weight,
-                  plates,
-                ),
-              );
+              handleSubmitWeight();
             }}
           >
             <img className="w-6" src="./send-arrow.svg" alt="Submit" />
           </button>
         </div>
+        {error ? <p className="text-sm text-red-700">{t(error)}</p> : <></>}
       </section>
     </main>
   );

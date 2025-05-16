@@ -7,8 +7,10 @@ const LinkItem: React.FC<LinkItemProps> = ({ link }) => {
       <NavLink
         to={`/${link.url}`}
         className={({ isActive }) => {
-          const activeClass = isActive ? "w-full bg-violet-800" : "";
-          return `group flex items-center rounded-full bg-gray-700 p-2.5 transition-all duration-300 ${activeClass}`;
+          const activeClass = isActive
+            ? "w-full bg-violet-800 hover:bg-violet-800/85"
+            : "";
+          return `group flex items-center rounded-full bg-gray-700 p-2.5 transition-all duration-300 hover:bg-gray-700/85 ${activeClass}`;
         }}
       >
         <img className="w-8" src={link.src} alt={link.title} />

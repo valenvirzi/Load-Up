@@ -47,5 +47,8 @@
   "lastTime": "Last time",
   "createExercise": "Create exercise",
   "editExercise": "Edit exercise",
-  "name": "Name"
+  "name": "Name",
+  "enterDesiredWeight": "Enter desired weight",
+  "calculatedWeight": "Calculated weight",
+  "weightGreaterThanBarbell": "Weight must be greater than the weight of the barbell"
 }
