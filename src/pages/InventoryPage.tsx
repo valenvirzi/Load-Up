@@ -1,4 +1,3 @@
-// TODO: Design this page
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import InventoryComponentSelector from "../components/InventoryComponentSelector";

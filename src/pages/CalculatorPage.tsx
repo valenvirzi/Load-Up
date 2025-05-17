@@ -1,5 +1,3 @@
-// TODO: Design this page
-
 import { useTranslation } from "react-i18next";
 import { useInventoryStore } from "../context/InventoryContext";
 import { useSettingsStore } from "../context/SettingsContext";
@@ -10,6 +8,7 @@ import calculateTotalWeight from "../utils/calculateTotalWeight";
 import calculateLoadedBarbell from "../utils/calculateLoadedBarbell";
 
 const CalculatorPage: React.FC = () => {
+  // TODO: Componetizar funcionalidades y elementos
   const { t } = useTranslation();
   const { massUnit } = useSettingsStore();
   const { plates, barbells } = useInventoryStore();
@@ -65,7 +64,6 @@ const CalculatorPage: React.FC = () => {
       <div className="p-2">
         <h2 className="text-3xl">{t("calculator")}</h2>
       </div>
-      {/* TODO: Make the right display for the loading of the barbell and write the logic. */}
       <section className="flex flex-col gap-2 px-2">
         <div className="flex flex-col gap-1">
           <label className="opacity-65" htmlFor="exerciseSelect">
@@ -128,7 +126,6 @@ const CalculatorPage: React.FC = () => {
         </div>
       </section>
       <section className="flex flex-col px-1">
-        {/* TODO: Make the calculating logic to later render the loaded bar with the corresponding weight given the input weight and the available plates */}
         <div
           className={`relative mt-16 flex h-6 items-center gap-1 rounded-sm ${barbellDisplayed.color} text-white`}
         >
@@ -156,15 +153,21 @@ const CalculatorPage: React.FC = () => {
           })}
         </div>
       </section>
-      <div className="relative top-16 self-center">
-        <p className="text-xl">
-          {t("calculatedWeight")}: {totalWeight}
-          {massUnit}
-        </p>
-        <p className="text-xl">
-          {t("inputWeight")}: {totalWeight}
-          {massUnit}
-        </p>
+      <div className="relative top-16 self-center px-4 text-xl">
+        <div className="flex w-full items-center justify-between gap-6">
+          <p>{t("currentWeight")}:</p>
+          <span>
+            {totalWeight}
+            {massUnit}
+          </span>
+        </div>
+        <div className="flex w-full items-center justify-between gap-6">
+          <p>{t("inputWeight")}:</p>
+          <span>
+            {desiredWeight ? desiredWeight : 0}
+            {massUnit}
+          </span>
+        </div>
       </div>
       <section className="relative top-20 flex w-full flex-col items-stretch gap-1 px-2">
         <label className="text-sm" htmlFor="desiredWeight">

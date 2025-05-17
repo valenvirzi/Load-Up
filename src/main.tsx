@@ -9,7 +9,6 @@ import ErrorPage from "./pages/ErrorPage.tsx";
 import SettingsPage from "./pages/SettingsPage.tsx";
 import CalculatorPage from "./pages/CalculatorPage.tsx";
 import InventoryPage from "./pages/InventoryPage.tsx";
-import TimerPage from "./pages/TimerPage.tsx";
 import ExercisesPage from "./pages/ExercisesPage.tsx";
 
 const router = createBrowserRouter([
@@ -21,7 +20,6 @@ const router = createBrowserRouter([
       { path: "/inventory", element: <InventoryPage /> },
       { path: "/exercises", element: <ExercisesPage /> },
       { path: "/calculator", element: <CalculatorPage /> },
-      { path: "/timer", element: <TimerPage /> },
       { path: "/settings", element: <SettingsPage /> },
     ],
   },

@@ -1,5 +1,3 @@
-// TODO: Design this page
-
 import { useTranslation } from "react-i18next";
 import Settings from "../components/Settings";
 

@@ -49,7 +49,7 @@
   "editExercise": "Edit exercise",
   "name": "Name",
   "enterDesiredWeight": "Enter desired weight",
-  "calculatedWeight": "Calculated weight",
+  "currentWeight": "Current weight",
   "weightGreaterThanBarbell": "Weight must be greater than the weight of the barbell",
   "inputWeight": "Input weight"
 }
