@@ -50,5 +50,6 @@
   "name": "Name",
   "enterDesiredWeight": "Enter desired weight",
   "calculatedWeight": "Calculated weight",
-  "weightGreaterThanBarbell": "Weight must be greater than the weight of the barbell"
+  "weightGreaterThanBarbell": "Weight must be greater than the weight of the barbell",
+  "inputWeight": "Input weight"
 }

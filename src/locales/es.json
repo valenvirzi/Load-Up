@@ -50,5 +50,6 @@
   "name": "Nombre",
   "enterDesiredWeight": "Ingresa el peso a calcular",
   "calculatedWeight": "Peso calculado",
-  "weightGreaterThanBarbell": "El peso debe ser mayor al de la barra"
+  "weightGreaterThanBarbell": "El peso debe ser mayor al de la barra",
+  "inputWeight": "Peso ingresado"
 }

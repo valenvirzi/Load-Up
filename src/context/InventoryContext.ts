@@ -16,25 +16,25 @@ export const useInventoryStore = create(
         {
           id: "plate,15",
           weight: 15,
-          color: "bg-gray-500",
+          color: "bg-yellow-800",
           availableAmount: 8,
         },
         {
           id: "plate,10",
           weight: 10,
-          color: "bg-gray-500",
+          color: "bg-emerald-800",
           availableAmount: 8,
         },
         {
           id: "plate,5",
           weight: 5,
-          color: "bg-gray-500",
+          color: "bg-blue-800",
           availableAmount: 8,
         },
         {
           id: "plate,2.5",
           weight: 2.5,
-          color: "bg-gray-500",
+          color: "bg-red-800",
           availableAmount: 8,
         },
         {

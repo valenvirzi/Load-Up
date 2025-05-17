@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useSettingsStore } from "../context/SettingsContext";
 import { Barbell } from "../types/types";
 
@@ -22,14 +23,20 @@ const BarbellInventoryItem: React.FC<BarbellInventoryItemProps> = ({
   setSelectedBarbell,
 }) => {
   const { massUnit } = useSettingsStore();
+  const { t } = useTranslation();
 
   return (
-    <li>
+    <li className="flex flex-col items-center">
       <button
-        className="flex cursor-pointer flex-col gap-2"
+        className="relative flex cursor-pointer flex-col gap-2"
         type="button"
         onClick={() => setSelectedBarbell(barbell)}
       >
+        <div
+          className={`absolute top-4 right-2 flex h-8 w-8 items-center justify-center rounded-full p-1.5 ${barbell.color}`}
+        >
+          <img className="" src="./edit.svg" alt={t("edit")} />
+        </div>
         <img src={BARBELLS_IMG[barbell.type]} alt={`${barbell.type} barbell`} />
         <div className="flex w-full justify-between text-lg">
           <h3 className="">{barbell.type}</h3>

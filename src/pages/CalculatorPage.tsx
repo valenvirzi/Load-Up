@@ -129,8 +129,12 @@ const CalculatorPage: React.FC = () => {
       </section>
       <section className="flex flex-col px-1">
         {/* TODO: Make the calculating logic to later render the loaded bar with the corresponding weight given the input weight and the available plates */}
-        <div className="relative mt-16 flex h-6 items-center gap-1 rounded-sm bg-slate-400 text-white">
-          <div className="absolute flex items-center justify-center rounded-sm bg-slate-400 p-3">
+        <div
+          className={`relative mt-16 flex h-6 items-center gap-1 rounded-sm ${barbellDisplayed.color} text-white`}
+        >
+          <div
+            className={`absolute flex items-center justify-center rounded-sm ${barbellDisplayed.color} p-3`}
+          >
             <span className="font-medium">{barbellDisplayed.weight}</span>
           </div>
           {renderedPlates.map((plate, index) => {
@@ -142,7 +146,7 @@ const CalculatorPage: React.FC = () => {
                     prevPlates.filter((p) => p.id !== plate.id),
                   );
                 }}
-                className={`plate ${index === 0 ? "ml-12" : ""} z-10 flex h-32 w-8 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-5`}
+                className={`plate ${index === 0 ? "ml-12" : ""} z-10 flex h-32 w-7 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
               >
                 <span className="plateWeight font-semibold">
                   {plate.weight}
@@ -152,9 +156,13 @@ const CalculatorPage: React.FC = () => {
           })}
         </div>
       </section>
-      <div className="relative top-20 self-center">
+      <div className="relative top-16 self-center">
         <p className="text-xl">
           {t("calculatedWeight")}: {totalWeight}
+          {massUnit}
+        </p>
+        <p className="text-xl">
+          {t("inputWeight")}: {totalWeight}
           {massUnit}
         </p>
       </div>

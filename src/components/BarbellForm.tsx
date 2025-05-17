@@ -23,7 +23,7 @@ const BARBELL_TYPES = [
 ];
 
 const BARBELL_COLORS = [
-  "bg-zinc-700",
+  "bg-zinc-500",
   "bg-yellow-800",
   "bg-emerald-800",
   "bg-blue-800",
