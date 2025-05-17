@@ -53,5 +53,8 @@
   "weightGreaterThanBarbell": "Weight must be greater than the weight of the barbell.",
   "inputWeight": "Input weight",
   "noPlatesInInventory": "No plates in the inventory.",
-  "noBarbellsInInventory": "No barbells in the inventory."
+  "noBarbellsInInventory": "No barbells in the inventory.",
+  "welcomeToLoadUp": "Welcome to Load Up!",
+  "errorHasOcurred": "An unexpected error has occurred. Go back to the Home page.",
+  "homePage": "Home page"
 }

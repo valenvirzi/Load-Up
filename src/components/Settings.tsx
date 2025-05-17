@@ -1,29 +1,29 @@
 import { useTranslation } from "react-i18next";
 import { useSettingsStore } from "../context/SettingsContext";
-import { DecimalSymbol, Language, MassUnit, Theme } from "../types/types";
+import { Language, MassUnit, Theme } from "../types/types";
 import SettingsItem from "./SettingsItem";
 
 const Settings: React.FC = () => {
   const { t, i18n } = useTranslation();
   const {
-    decimalSymbol,
+    // decimalSymbol,
     language,
     massUnit,
     theme,
-    setDecimalSymbol,
+    // setDecimalSymbol,
     setLanguage,
     setMassUnit,
     setTheme,
   } = useSettingsStore();
 
   const settings = {
-    decimalSymbol: {
-      label: t("decimalSymbol"),
-      options: [
-        { value: ".", label: "." },
-        { value: ",", label: "," },
-      ],
-    },
+    // decimalSymbol: {
+    //   label: t("decimalSymbol"),
+    //   options: [
+    //     { value: ".", label: "." },
+    //     { value: ",", label: "," },
+    //   ],
+    // },
     massUnit: {
       label: t("massUnit"),
       options: [
@@ -48,14 +48,14 @@ const Settings: React.FC = () => {
   };
 
   const stateValues: Record<keyof typeof settings, string> = {
-    decimalSymbol,
+    // decimalSymbol,
     massUnit,
     language,
     theme,
   };
 
   const handleChange = (id: keyof typeof settings, value: string) => {
-    if (id === "decimalSymbol") setDecimalSymbol(value as DecimalSymbol);
+    // if (id === "decimalSymbol") setDecimalSymbol(value as DecimalSymbol);
     if (id === "massUnit") setMassUnit(value as MassUnit);
     if (id === "language") {
       setLanguage(value as Language);

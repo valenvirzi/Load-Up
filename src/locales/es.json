@@ -53,5 +53,8 @@
   "weightGreaterThanBarbell": "El peso debe ser mayor al de la barra.",
   "inputWeight": "Peso ingresado",
   "noPlatesInInventory": "No hay discos en el inventario.",
-  "noBarbellsInInventory": "No hay barras en el inventario."
+  "noBarbellsInInventory": "No hay barras en el inventario.",
+  "welcomeToLoadUp": "¡Bienvenido a Load Up!",
+  "errorHasOcurred": "Ha ocurrido un error inesperado. Vuelve a la página de inicio.",
+  "homePage": "Página de Inicio"
 }
