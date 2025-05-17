@@ -13,7 +13,7 @@ const PlatesInventory: React.FC = () => {
   return (
     <section className="flex flex-col gap-2 px-1">
       <button
-        className="mt-4 cursor-pointer rounded-full bg-violet-800 p-3 text-white hover:bg-violet-800/85"
+        className="mt-4 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white hover:bg-violet-800/85"
         onClick={() => {
           setCreate(true);
           setSelectedPlate({

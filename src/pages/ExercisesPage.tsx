@@ -32,12 +32,12 @@ const ExercisesPage: React.FC = () => {
               workoutVolume: null,
             });
           }}
-          className="mt-4 cursor-pointer rounded-full bg-violet-800 p-3 text-white"
+          className="mt-4 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white"
           type="button"
         >
           <span>{t("addNewExercise")}</span>
         </button>
-        <ul className="border-t border-t-gray-400">
+        <ul className="border-0 border-t border-t-gray-500">
           {exercises.map((exercise) => {
             return (
               <ExerciseItem

@@ -14,7 +14,7 @@ const InventoryComponentSelector: React.FC<InventoryComponentSelectorProps> = ({
     { label: t("barbells"), value: InventoryComponent.Barbells },
   ];
   return (
-    <ul className="flex justify-evenly border-b border-b-gray-400">
+    <ul className="flex justify-evenly border-0 border-b border-b-gray-500">
       {inventoryDisplays.map(({ label, value }) => (
         <li className="flex-1" key={value}>
           <button
