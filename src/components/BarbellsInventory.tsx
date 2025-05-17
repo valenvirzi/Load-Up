@@ -27,15 +27,22 @@ const BarbellsInventory: React.FC = () => {
       >
         <span>{t("addNewBarbell")}</span>
       </button>
-      <ul>
-        {barbells.map((barbell) => (
-          <BarbellInventoryItem
-            key={barbell.id}
-            barbell={barbell}
-            setSelectedBarbell={setSelectedBarbell}
-          />
-        ))}
-      </ul>
+      <hr className="border-0 border-b border-b-gray-500" />
+      {barbells.length === 0 ? (
+        <p className="mt-2 text-center text-sm text-gray-400">
+          {t("noBarbellsInInventory")}
+        </p>
+      ) : (
+        <ul>
+          {barbells.map((barbell) => (
+            <BarbellInventoryItem
+              key={barbell.id}
+              barbell={barbell}
+              setSelectedBarbell={setSelectedBarbell}
+            />
+          ))}
+        </ul>
+      )}
 
       {selectedBarbell === null ? (
         <></>

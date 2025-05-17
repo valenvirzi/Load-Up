@@ -6,6 +6,8 @@ import { Barbell, Plate } from "../types/types";
 import { Exercise, useExercisesStore } from "../context/ExercisesContext";
 import calculateTotalWeight from "../utils/calculateTotalWeight";
 import calculateLoadedBarbell from "../utils/calculateLoadedBarbell";
+import ExerciseSelector from "../components/ExerciseSelector";
+import BarbellSelector from "../components/BarbellSelector";
 
 const CalculatorPage: React.FC = () => {
   // TODO: Componetizar funcionalidades y elementos
@@ -14,7 +16,12 @@ const CalculatorPage: React.FC = () => {
   const { plates, barbells } = useInventoryStore();
   const { exercises } = useExercisesStore();
   const [barbellDisplayed, setBarbellDisplayed] = useState<Barbell>(
-    barbells[0],
+    barbells[0] ?? {
+      id: "barbell,standard,20",
+      weight: 20,
+      color: "bg-zinc-600",
+      type: "Standard",
+    },
   );
   const [currentExercise, setCurrentExercise] = useState<Exercise>(
     exercises[0],
@@ -65,65 +72,24 @@ const CalculatorPage: React.FC = () => {
         <h2 className="text-3xl">{t("calculator")}</h2>
       </div>
       <section className="flex flex-col gap-2 px-2">
-        <div className="flex flex-col gap-1">
-          <label className="opacity-65" htmlFor="exerciseSelect">
-            {t("selectExercise")}
-          </label>
-          <select
-            className="cursor-pointer rounded border-none bg-gray-100 p-2 dark:bg-zinc-700"
-            name="exerciseSelect"
-            id="exerciseSelect"
-            onChange={(e) => {
-              const selectedName = e.target.value;
-              const selectedExercise = exercises.find(
-                (e) => e.name === selectedName,
-              );
-              if (selectedExercise) {
-                setCurrentExercise(selectedExercise);
-              }
-            }}
-            value={currentExercise.name}
-          >
-            {exercises.map((exercise) => {
-              return (
-                <option
-                  className="flex"
-                  value={exercise.name}
-                  key={exercise.name}
-                >
-                  <span>{exercise.name}</span>
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="flex flex-col gap-1">
-          <label className="opacity-65" htmlFor="barbellSelect">
-            {t("selectBarbell")}
-          </label>
-          <select
-            className="cursor-pointer rounded border-none bg-gray-100 p-2 dark:bg-zinc-700"
-            name="barbellSelect"
-            id="barbellSelect"
-            onChange={(e) => {
-              const selectedId = e.target.value;
-              const selectedBarbell = barbells.find((b) => b.id === selectedId);
-              if (selectedBarbell) {
-                setBarbellDisplayed(selectedBarbell);
-              }
-            }}
-            value={barbellDisplayed.id}
-          >
-            {barbells.map((barbell) => {
-              return (
-                <option className="flex" value={barbell.id} key={barbell.id}>
-                  <span>{barbell.type}</span>
-                  <span> {`(${barbell.weight}${massUnit})`}</span>
-                </option>
-              );
-            })}
-          </select>
-        </div>
+        {exercises.length === 0 ? (
+          <></>
+        ) : (
+          <ExerciseSelector
+            currentExercise={currentExercise}
+            exercises={exercises}
+            setCurrentExercise={setCurrentExercise}
+          />
+        )}
+        {barbells.length === 0 ? (
+          <></>
+        ) : (
+          <BarbellSelector
+            barbellDisplayed={barbellDisplayed}
+            barbells={barbells}
+            setBarbellDisplayed={setBarbellDisplayed}
+          />
+        )}
       </section>
       <section className="flex flex-col px-1">
         <div

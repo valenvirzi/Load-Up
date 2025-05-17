@@ -50,6 +50,8 @@
   "name": "Name",
   "enterDesiredWeight": "Enter desired weight",
   "currentWeight": "Current weight",
-  "weightGreaterThanBarbell": "Weight must be greater than the weight of the barbell",
-  "inputWeight": "Input weight"
+  "weightGreaterThanBarbell": "Weight must be greater than the weight of the barbell.",
+  "inputWeight": "Input weight",
+  "noPlatesInInventory": "No plates in the inventory.",
+  "noBarbellsInInventory": "No barbells in the inventory."
 }

@@ -27,15 +27,23 @@ const PlatesInventory: React.FC = () => {
       >
         <span>{t("addNewPlate")}</span>
       </button>
-      <ul className="grid grid-cols-3 gap-2 p-2">
-        {plates.map((plate) => (
-          <PlateInventoryItem
-            key={plate.id}
-            plate={plate}
-            setSelectedPlate={setSelectedPlate}
-          />
-        ))}
-      </ul>
+      <hr className="border-0 border-b border-b-gray-500" />
+
+      {plates.length === 0 ? (
+        <p className="mt-2 text-center text-sm text-gray-400">
+          {t("noPlatesInInventory")}
+        </p>
+      ) : (
+        <ul className="grid grid-cols-3 gap-2 p-2">
+          {plates.map((plate) => (
+            <PlateInventoryItem
+              key={plate.id}
+              plate={plate}
+              setSelectedPlate={setSelectedPlate}
+            />
+          ))}
+        </ul>
+      )}
 
       {selectedPlate === null ? (
         <></>
