@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="fixed right-1 bottom-6 left-1 z-10 rounded-full bg-gray-900 p-1 text-white md:right-3 md:left-3 dark:bg-white">
+    <footer className="fixed right-2 bottom-6 left-2 z-10 rounded-full bg-gray-900 p-1 text-white dark:bg-white">
       <nav>
         <ul className="flex items-stretch justify-between gap-0.5">
           {links.map((link) => (

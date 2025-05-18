@@ -91,9 +91,9 @@ const CalculatorPage: React.FC = () => {
           />
         )}
       </section>
-      <section className="flex flex-col px-1">
+      <section className="flex h-44 overflow-x-auto overflow-y-hidden px-1 pt-2">
         <div
-          className={`relative mt-16 flex h-6 items-center gap-1 rounded-sm ${barbellDisplayed.color} text-white`}
+          className={`relative mt-16 flex h-6 min-w-60 items-center gap-1 rounded-sm ${barbellDisplayed.color} text-white`}
         >
           <div
             className={`absolute flex items-center justify-center rounded-sm ${barbellDisplayed.color} p-3`}
@@ -109,7 +109,7 @@ const CalculatorPage: React.FC = () => {
                     prevPlates.filter((p) => p.id !== plate.id),
                   );
                 }}
-                className={`plate ${index === 0 ? "ml-12" : ""} z-10 flex h-32 w-7 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
+                className={`plate ${index === 0 ? "ml-12" : ""} z-10 flex h-32 w-9 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
               >
                 <span className="plateWeight font-semibold">
                   {plate.weight}

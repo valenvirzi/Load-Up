@@ -9,6 +9,7 @@ const WelcomePage: React.FC = () => {
         <h2 className="text-3xl text-pretty">{t("welcomeToLoadUp")}</h2>
       </div>
       <section className="flex flex-col gap-3 p-2">
+        {/* TODO: Translate Page */}
         <h2 className="text-xl">Funcionalidades:</h2>
         <ul className="flex list-disc flex-col gap-2 pr-1 pl-4 text-pretty">
           <li>
