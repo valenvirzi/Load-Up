@@ -11,6 +11,7 @@ import CalculatorPage from "./pages/CalculatorPage.tsx";
 import InventoryPage from "./pages/InventoryPage.tsx";
 import ExercisesPage from "./pages/ExercisesPage.tsx";
 import WelcomePage from "./pages/WelcomePage.tsx";
+import ExercisePage from "./pages/ExercisePage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,13 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <WelcomePage /> },
       { path: "/inventory", element: <InventoryPage /> },
-      { path: "/exercises", element: <ExercisesPage /> },
+      {
+        path: "/exercises",
+        element: <ExercisesPage />,
+        children: [
+          { path: "/exercises/:exerciseName", element: <ExercisePage /> },
+        ],
+      },
       { path: "/calculator", element: <CalculatorPage /> },
       { path: "/settings", element: <SettingsPage /> },
     ],

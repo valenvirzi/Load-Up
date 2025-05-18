@@ -10,7 +10,7 @@ const ExerciseDate: React.FC<ExerciseDateProps> = ({ latestWorkoutDate }) => {
   if (!latestWorkoutDate) {
     return <span>{t("noDateAvailable")}</span>;
   } else {
-    const formattedDate: string = `${latestWorkoutDate.day}-${latestWorkoutDate.month}-${latestWorkoutDate.year} ${latestWorkoutDate.hour}:${latestWorkoutDate.minute}hs`;
+    const formattedDate: string = `${String(latestWorkoutDate.day).padStart(2, "0")}-${String(latestWorkoutDate.month).padStart(2, "0")}-${latestWorkoutDate.year} ${String(latestWorkoutDate.hour).padStart(2, "0")}:${String(latestWorkoutDate.minute).padStart(2, "0")}hs`;
     return <span>{formattedDate}</span>;
   }
 };

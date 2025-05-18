@@ -31,6 +31,7 @@ const ExerciseForm: React.FC<ExerciseFormProps> = ({
     workoutVolume: selectedExercise.workoutVolume,
     average1RM: selectedExercise.average1RM,
     latestWorkoutDate: selectedExercise.latestWorkoutDate,
+    history: selectedExercise.history,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

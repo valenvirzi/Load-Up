@@ -9,6 +9,11 @@ export type WorkoutDate = {
   minute: number;
 };
 
+export type ExerciseData = {
+  date: WorkoutDate;
+  weight: number;
+};
+
 export type Exercise = {
   name: string;
   sets: number;
@@ -17,6 +22,7 @@ export type Exercise = {
   average1RM: number | null;
   workoutVolume: number | null;
   latestWorkoutDate: WorkoutDate | null;
+  history: ExerciseData[];
 };
 
 type ExercisesStore = {
@@ -47,6 +53,7 @@ export const useExercisesStore = create(
             hour: 15,
             minute: 15,
           },
+          history: [],
         },
       ],
 

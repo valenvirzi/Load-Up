@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Exercise } from "../context/ExercisesContext";
 import { useSettingsStore } from "../context/SettingsContext";
 import ExerciseDate from "./ExerciseDate";
+import { Link } from "react-router-dom";
 
 interface ExerciseItemProps {
   exercise: Exercise;
@@ -17,7 +18,7 @@ const ExerciseItem: React.FC<ExerciseItemProps> = ({
   return (
     <li
       key={exercise.name}
-      className="flex items-stretch justify-between border-b border-b-gray-400 p-2"
+      className="flex items-stretch justify-between border-b border-b-gray-400 py-3"
     >
       <div className="flex flex-col gap-2">
         <span className="text-xl">{exercise.name}</span>
@@ -59,18 +60,18 @@ const ExerciseItem: React.FC<ExerciseItemProps> = ({
         </div>
       </div>
       <div className="flex flex-col items-center justify-between gap-3">
-        <button
+        <Link
+          to={`/exercises/${exercise.name}`}
           className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-2"
-          type="button"
         >
-          <img className="w-5" src="./graph.svg" alt={t("graph")} />
-        </button>
+          <img className="w-6" src="./graph.svg" alt={t("graph")} />
+        </Link>
         <button
           className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-2"
           type="button"
           onClick={() => setSelectedExercise(exercise)}
         >
-          <img className="w-5" src="./edit.svg" alt={t("edit")} />
+          <img className="w-6" src="./edit.svg" alt={t("edit")} />
         </button>
       </div>
     </li>
