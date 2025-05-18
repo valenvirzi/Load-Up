@@ -110,7 +110,7 @@ const CalculatorPage: React.FC = () => {
                     prevPlates.filter((p) => p.id !== plate.id),
                   );
                 }}
-                className={`plate ${index === 0 ? "ml-12" : ""} ${index === renderedPlates.length - 1 ? "mr-2" : ""} z-10 flex h-32 w-9 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
+                className={`plate ${index === 0 ? "ml-12" : ""} ${index === renderedPlates.length - 1 ? "mr-2" : ""} z-10 flex h-32 min-w-9 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
               >
                 <span className="plateWeight font-semibold">
                   {plate.weight}

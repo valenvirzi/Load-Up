@@ -26,7 +26,7 @@ const BarbellInventoryItem: React.FC<BarbellInventoryItemProps> = ({
   const { t } = useTranslation();
 
   return (
-    <li className="flex flex-col items-center">
+    <li className="flex flex-col items-stretch">
       <button
         className="relative flex cursor-pointer flex-col gap-2"
         type="button"
