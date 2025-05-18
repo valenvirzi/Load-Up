@@ -120,7 +120,7 @@ const CalculatorPage: React.FC = () => {
           })}
         </div>
       </section>
-      <div className="relative top-16 self-center px-4 text-xl">
+      <div className="relative self-center px-4 text-xl">
         <div className="flex w-full items-center justify-between gap-6">
           <p>{t("currentWeight")}:</p>
           <span>
@@ -136,7 +136,7 @@ const CalculatorPage: React.FC = () => {
           </span>
         </div>
       </div>
-      <section className="relative top-20 flex w-full flex-col items-stretch gap-1 px-2">
+      <section className="relative top-2 flex w-full flex-col items-stretch gap-1 px-2">
         <label className="text-sm" htmlFor="desiredWeight">
           {t("enterDesiredWeight")} ({massUnit}):
         </label>
