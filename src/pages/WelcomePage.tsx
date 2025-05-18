@@ -11,31 +11,22 @@ const WelcomePage: React.FC = () => {
       </div>
       <section className="flex flex-col gap-3 p-2">
         {/* TODO: Translate Page */}
-        <h2 className="text-xl">Funcionalidades:</h2>
+        <h2 className="text-xl">{t("featuresTitle")}:</h2>
         <ul className="flex list-disc flex-col gap-2 pr-1 pl-4 text-pretty">
           <li>
-            <p>Guardar un inventario de tus Barras y Discos.</p>
+            <p>{t("featureInventory")}</p>
           </li>
           <li>
-            <p>
-              Calcular la forma más eficiente de cargar tu barra a la hora de
-              ejercitar.
-            </p>
+            <p>{t("featureLoadCalc")}</p>
           </li>
           <li>
-            <p>Guardar los ejercicios de tu rutina.</p>
+            <p>{t("featureSaveExercises")}</p>
           </li>
           <li>
-            <p>
-              Obtener la información de tu progreso, de forma gráfica, en cada
-              ejercicio a lo largo del tiempo.
-            </p>
+            <p>{t("featureProgress")}</p>
           </li>
           <li>
-            <p>
-              Acceso a configuraciones en cuanto a: Unidad de peso, Idioma y
-              Tema de la App
-            </p>
+            <p>{t("featureSettings")}</p>
           </li>
         </ul>
       </section>

@@ -58,5 +58,11 @@
   "errorHasOcurred": "An unexpected error has occurred. Go back to the Home page.",
   "homePage": "Home page",
   "saveProgressTo": "Save progress to",
-  "allExercises": "All exercises"
+  "allExercises": "All exercises",
+  "featuresTitle": "Features",
+  "featureInventory": "Save an inventory of your Barbells and Plates.",
+  "featureLoadCalc": "Calculate the most efficient way to load your bar for training.",
+  "featureSaveExercises": "Save the exercises in your routine.",
+  "featureProgress": "Get graphical information of your progress in each exercise over time.",
+  "featureSettings": "Access settings for: Weight unit, Language, and App Theme."
 }
