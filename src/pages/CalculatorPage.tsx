@@ -11,7 +11,9 @@ import ExerciseSelector from "../components/ExerciseSelector";
 import BarbellSelector from "../components/BarbellSelector";
 
 const CalculatorPage: React.FC = () => {
-  // TODO: Componetizar funcionalidades y elementos
+  // TODO: Componetizar funcionalidades y elementos.
+  // TODO: Administrar guardado de información en el Historial de cada ejercicio.
+
   const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
   const { massUnit } = useSettingsStore();

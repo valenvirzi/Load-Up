@@ -8,6 +8,9 @@ import ExerciseDate from "../components/ExerciseDate";
 import { useSettingsStore } from "../context/SettingsContext";
 
 const ExercisePage: React.FC = () => {
+  // TODO: Componetizar funcionalidades y elementos.
+  // TODO: Agregar Formulario para la edición y eliminación de los elementos del Historial
+
   const params = useParams<{ exerciseName: string }>();
   const { massUnit } = useSettingsStore();
   const { t } = useTranslation();
