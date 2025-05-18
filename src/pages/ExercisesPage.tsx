@@ -14,7 +14,7 @@ const ExercisesPage: React.FC = () => {
     null,
   );
   return (
-    <main className="flex flex-col items-stretch p-2">
+    <main className="flex flex-col items-stretch p-2 px-4">
       <div className="p-2">
         <h2 className="text-3xl">{t("exercises")}</h2>
       </div>

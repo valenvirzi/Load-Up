@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useInventoryStore } from "../context/InventoryContext";
 import { useSettingsStore } from "../context/SettingsContext";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Barbell, Plate } from "../types/types";
 import { Exercise, useExercisesStore } from "../context/ExercisesContext";
 import calculateTotalWeight from "../utils/calculateTotalWeight";
@@ -11,6 +11,7 @@ import BarbellSelector from "../components/BarbellSelector";
 
 const CalculatorPage: React.FC = () => {
   // TODO: Componetizar funcionalidades y elementos
+  const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
   const { massUnit } = useSettingsStore();
   const { plates, barbells } = useInventoryStore();
@@ -67,7 +68,7 @@ const CalculatorPage: React.FC = () => {
     );
   }, [renderedPlates, barbellDisplayed]);
   return (
-    <main className="flex flex-col items-stretch gap-4 p-2">
+    <main className="flex flex-col gap-4 p-2 px-4">
       <div className="p-2">
         <h2 className="text-3xl">{t("calculator")}</h2>
       </div>
@@ -93,7 +94,7 @@ const CalculatorPage: React.FC = () => {
       </section>
       <section className="flex h-44 overflow-x-auto overflow-y-hidden px-1 pt-2">
         <div
-          className={`relative mt-16 flex h-6 min-w-60 items-center gap-1 rounded-sm ${barbellDisplayed.color} text-white`}
+          className={`relative mt-16 flex h-6 w-auto min-w-60 items-center gap-1 rounded-sm ${barbellDisplayed.color} text-white`}
         >
           <div
             className={`absolute flex items-center justify-center rounded-sm ${barbellDisplayed.color} p-3`}
@@ -109,7 +110,7 @@ const CalculatorPage: React.FC = () => {
                     prevPlates.filter((p) => p.id !== plate.id),
                   );
                 }}
-                className={`plate ${index === 0 ? "ml-12" : ""} z-10 flex h-32 w-9 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
+                className={`plate ${index === 0 ? "ml-12" : ""} ${index === renderedPlates.length - 1 ? "mr-2" : ""} z-10 flex h-32 w-9 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
               >
                 <span className="plateWeight font-semibold">
                   {plate.weight}
@@ -151,6 +152,13 @@ const CalculatorPage: React.FC = () => {
             min={0}
             step={0.05}
             value={desiredWeight}
+            ref={inputRef}
+            onFocus={() => {
+              inputRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+            }}
             onChange={handleNumberChange}
             onBlur={handleNumberBlur}
             onKeyDown={(e) => {
