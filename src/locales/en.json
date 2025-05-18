@@ -64,5 +64,8 @@
   "featureLoadCalc": "Calculate the most efficient way to load your bar for training.",
   "featureSaveExercises": "Save the exercises in your routine.",
   "featureProgress": "Get graphical information of your progress in each exercise over time.",
-  "featureSettings": "Access settings for: Weight unit, Language, and App Theme."
+  "featureSettings": "Access settings for: Weight unit, Language, and App Theme.",
+  "sortElements": "Sort",
+  "oldFirst": "Older first",
+  "recentFirst": "Recent first"
 }

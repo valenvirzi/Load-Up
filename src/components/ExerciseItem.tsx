@@ -57,7 +57,10 @@ const ExerciseItem: React.FC<ExerciseItemProps> = ({
           )}
           <span>
             {t("lastTime")}:{" "}
-            <ExerciseDate latestWorkoutDate={exercise.latestWorkoutDate} />
+            <ExerciseDate
+              latestWorkoutDate={exercise.latestWorkoutDate}
+              displayHour={true}
+            />
           </span>
         </div>
       </div>

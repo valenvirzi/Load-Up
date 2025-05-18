@@ -66,6 +66,50 @@ export const useExercisesStore = create(
               average1RM: 107.12,
               workoutVolume: 2700,
             },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 15,
+                hour: 19,
+                minute: 45,
+              },
+              average1RM: 105.4,
+              workoutVolume: 2600,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 12,
+                hour: 18,
+                minute: 30,
+              },
+              average1RM: 103.9,
+              workoutVolume: 2550,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 10,
+                hour: 17,
+                minute: 10,
+              },
+              average1RM: 101.3,
+              workoutVolume: 2400,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 7,
+                hour: 16,
+                minute: 20,
+              },
+              average1RM: 98.75,
+              workoutVolume: 2300,
+            },
           ],
         },
         {
@@ -82,7 +126,63 @@ export const useExercisesStore = create(
             hour: 1,
             minute: 24,
           },
-          history: [],
+          history: [
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 17,
+                hour: 22,
+                minute: 6,
+              },
+              average1RM: 92.5,
+              workoutVolume: 1650,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 15,
+                hour: 19,
+                minute: 45,
+              },
+              average1RM: 90.2,
+              workoutVolume: 1600,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 12,
+                hour: 18,
+                minute: 30,
+              },
+              average1RM: 88.1,
+              workoutVolume: 1550,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 10,
+                hour: 17,
+                minute: 10,
+              },
+              average1RM: 86.0,
+              workoutVolume: 1500,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 7,
+                hour: 16,
+                minute: 20,
+              },
+              average1RM: 84.3,
+              workoutVolume: 1450,
+            },
+          ],
         },
         {
           name: "Military Press",
@@ -98,7 +198,63 @@ export const useExercisesStore = create(
             hour: 1,
             minute: 24,
           },
-          history: [],
+          history: [
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 17,
+                hour: 22,
+                minute: 6,
+              },
+              average1RM: 57.5,
+              workoutVolume: 980,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 15,
+                hour: 19,
+                minute: 45,
+              },
+              average1RM: 55.8,
+              workoutVolume: 940,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 12,
+                hour: 18,
+                minute: 30,
+              },
+              average1RM: 54.2,
+              workoutVolume: 910,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 10,
+                hour: 17,
+                minute: 10,
+              },
+              average1RM: 52.6,
+              workoutVolume: 880,
+            },
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 7,
+                hour: 16,
+                minute: 20,
+              },
+              average1RM: 51.0,
+              workoutVolume: 850,
+            },
+          ],
         },
       ],
       createExercise: (newExercise: Exercise) =>
