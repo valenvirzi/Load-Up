@@ -56,5 +56,6 @@
   "noBarbellsInInventory": "No barbells in the inventory.",
   "welcomeToLoadUp": "Welcome to Load Up!",
   "errorHasOcurred": "An unexpected error has occurred. Go back to the Home page.",
-  "homePage": "Home page"
+  "homePage": "Home page",
+  "saveProgressTo": "Save progress to"
 }

@@ -94,14 +94,14 @@ const CalculatorPage: React.FC = () => {
       </section>
       <section className="flex h-44 overflow-x-auto overflow-y-hidden px-1 pt-2">
         <div
-          className={`relative mt-16 flex h-6 w-auto min-w-60 items-center gap-1 rounded-sm ${barbellDisplayed.color} text-white`}
+          className={`relative mt-16 flex h-6 w-full min-w-60 items-center gap-1 rounded-sm ${barbellDisplayed.color} text-white`}
         >
           <div
-            className={`absolute flex items-center justify-center rounded-sm ${barbellDisplayed.color} p-3`}
+            className={`flex items-center justify-center rounded-sm ${barbellDisplayed.color} p-3`}
           >
             <span className="font-medium">{barbellDisplayed.weight}</span>
           </div>
-          {renderedPlates.map((plate, index) => {
+          {renderedPlates.map((plate) => {
             return (
               <button
                 key={plate.id}
@@ -110,7 +110,7 @@ const CalculatorPage: React.FC = () => {
                     prevPlates.filter((p) => p.id !== plate.id),
                   );
                 }}
-                className={`plate ${index === 0 ? "ml-12" : ""} ${index === renderedPlates.length - 1 ? "mr-2" : ""} z-10 flex h-32 min-w-9 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
+                className={`plate z-10 flex h-32 w-9 min-w-9 cursor-pointer items-center justify-center rounded-sm ${plate.color} p-2 md:p-4`}
               >
                 <span className="plateWeight font-semibold">
                   {plate.weight}
@@ -180,6 +180,18 @@ const CalculatorPage: React.FC = () => {
         </div>
         {error ? <p className="text-sm text-red-700">{t(error)}</p> : <></>}
       </section>
+      {exercises.length === 0 ? (
+        <></>
+      ) : (
+        <section className="flex justify-center p-2">
+          <button
+            className="mt-2 cursor-pointer rounded-full bg-violet-800 p-3 px-4 text-white hover:bg-violet-800/85"
+            type="button"
+          >
+            {t("saveProgressTo")} {currentExercise.name}
+          </button>
+        </section>
+      )}
     </main>
   );
 };
