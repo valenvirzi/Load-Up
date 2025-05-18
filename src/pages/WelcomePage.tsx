@@ -1,3 +1,4 @@
+import gym from "../assets/gym.svg";
 import { useTranslation } from "react-i18next";
 
 const WelcomePage: React.FC = () => {
@@ -5,7 +6,7 @@ const WelcomePage: React.FC = () => {
   return (
     <main className="flex flex-col items-stretch gap-2 p-2 px-4">
       <div className="p-2">
-        <img src="./gym.svg" className="w-24" alt="Icon" />
+        <img src={gym} className="w-24" alt="Icon" />
         <h2 className="text-3xl text-pretty">{t("welcomeToLoadUp")}</h2>
       </div>
       <section className="flex flex-col gap-3 p-2">

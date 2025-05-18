@@ -1,3 +1,4 @@
+import sendArrow from "../assets/send-arrow.svg";
 import { useTranslation } from "react-i18next";
 import { useInventoryStore } from "../context/InventoryContext";
 import { useSettingsStore } from "../context/SettingsContext";
@@ -177,7 +178,7 @@ const CalculatorPage: React.FC = () => {
               handleSubmitWeight();
             }}
           >
-            <img className="w-6" src="./send-arrow.svg" alt="Submit" />
+            <img className="w-6" src={sendArrow} alt="Submit" />
           </button>
         </div>
         {error ? (

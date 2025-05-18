@@ -1,4 +1,5 @@
 // TODO: Design this page
+import radarGraph from "../assets/radar-graph.svg";
 
 import { useTranslation } from "react-i18next";
 import { Exercise, useExercisesStore } from "../context/ExercisesContext";
@@ -31,11 +32,7 @@ const ExercisesPage: React.FC = () => {
             }}
             to={to}
           >
-            <img
-              className="w-7"
-              src="./radar-graph.svg"
-              alt={t("radarGraph")}
-            />
+            <img className="w-7" src={radarGraph} alt={t("radarGraph")} />
           </NavLink>
         ) : (
           <></>

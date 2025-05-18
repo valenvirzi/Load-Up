@@ -1,3 +1,7 @@
+import inventory from "../assets/inventory.svg";
+import exercises from "../assets/exercises.svg";
+import calculator from "../assets/calculator.svg";
+import settings from "../assets/settings.svg";
 import { useTranslation } from "react-i18next";
 import { Link } from "../types/types";
 import LinkItem from "./LinkItem";
@@ -9,25 +13,25 @@ const Footer: React.FC = () => {
     {
       title: t("inventory"),
       url: "inventory",
-      src: "./inventory.svg",
+      src: inventory,
       srcActive: "",
     },
     {
       title: t("exercises"),
       url: "exercises",
-      src: "./exercises.svg",
+      src: exercises,
       srcActive: "",
     },
     {
       title: t("calculator"),
       url: "calculator",
-      src: "./calculator.svg",
+      src: calculator,
       srcActive: "",
     },
     {
       title: t("settings"),
       url: "settings",
-      src: "./settings.svg",
+      src: settings,
       srcActive: "",
     },
   ];

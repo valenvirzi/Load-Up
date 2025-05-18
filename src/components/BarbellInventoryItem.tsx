@@ -1,3 +1,4 @@
+import edit from "../assets/edit.svg";
 import { useTranslation } from "react-i18next";
 import { useSettingsStore } from "../context/SettingsContext";
 import { Barbell } from "../types/types";
@@ -35,7 +36,7 @@ const BarbellInventoryItem: React.FC<BarbellInventoryItemProps> = ({
         <div
           className={`absolute top-4 right-2 flex h-8 w-8 items-center justify-center rounded-full p-1.5 ${barbell.color}`}
         >
-          <img className="" src="./edit.svg" alt={t("edit")} />
+          <img className="" src={edit} alt={t("edit")} />
         </div>
         <img src={BARBELLS_IMG[barbell.type]} alt={`${barbell.type} barbell`} />
         <div className="flex w-full justify-between text-lg">

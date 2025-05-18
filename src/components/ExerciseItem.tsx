@@ -1,3 +1,5 @@
+import graph from "../assets/graph.svg";
+import edit from "../assets/edit.svg";
 import { useTranslation } from "react-i18next";
 import { Exercise } from "../context/ExercisesContext";
 import { useSettingsStore } from "../context/SettingsContext";
@@ -64,14 +66,14 @@ const ExerciseItem: React.FC<ExerciseItemProps> = ({
           to={`/exercises/${exercise.name}`}
           className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-2"
         >
-          <img className="w-6" src="./graph.svg" alt={t("graph")} />
+          <img className="w-6" src={graph} alt={t("graph")} />
         </Link>
         <button
           className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-2"
           type="button"
           onClick={() => setSelectedExercise(exercise)}
         >
-          <img className="w-6" src="./edit.svg" alt={t("edit")} />
+          <img className="w-6" src={edit} alt={t("edit")} />
         </button>
       </div>
     </li>

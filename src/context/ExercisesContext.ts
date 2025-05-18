@@ -11,7 +11,8 @@ export type WorkoutDate = {
 
 export type ExerciseData = {
   date: WorkoutDate;
-  weight: number;
+  average1RM: number;
+  workoutVolume: number;
 };
 
 export type Exercise = {
@@ -40,23 +41,66 @@ export const useExercisesStore = create(
     (set) => ({
       exercises: [
         {
-          name: "Bench Press",
-          currentWeight: 50,
+          name: "Squats",
+          currentWeight: 75,
           sets: 3,
           repsPerSet: 12,
-          average1RM: 0,
-          workoutVolume: 0,
+          workoutVolume: 2700,
+          average1RM: 107.12,
           latestWorkoutDate: {
             year: 2025,
-            month: 4,
-            day: 14,
-            hour: 15,
-            minute: 15,
+            month: 5,
+            day: 17,
+            hour: 22,
+            minute: 6,
+          },
+          history: [
+            {
+              date: {
+                year: 2025,
+                month: 5,
+                day: 17,
+                hour: 22,
+                minute: 6,
+              },
+              average1RM: 107.12,
+              workoutVolume: 2700,
+            },
+          ],
+        },
+        {
+          name: "Bench Press",
+          currentWeight: 60,
+          sets: 3,
+          repsPerSet: 12,
+          workoutVolume: 2160,
+          average1RM: 85.69,
+          latestWorkoutDate: {
+            year: 2025,
+            month: 5,
+            day: 18,
+            hour: 1,
+            minute: 24,
+          },
+          history: [],
+        },
+        {
+          name: "Military Press",
+          currentWeight: 40,
+          sets: 3,
+          repsPerSet: 12,
+          workoutVolume: 1440,
+          average1RM: 57.13,
+          latestWorkoutDate: {
+            year: 2025,
+            month: 5,
+            day: 18,
+            hour: 1,
+            minute: 24,
           },
           history: [],
         },
       ],
-
       createExercise: (newExercise: Exercise) =>
         set((state) => {
           if (state.exercises.some((e) => e.name === newExercise.name)) {

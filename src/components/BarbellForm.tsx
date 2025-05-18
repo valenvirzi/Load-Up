@@ -1,3 +1,4 @@
+import deleteImg from "../assets/delete.svg";
 import { useState } from "react";
 import { Barbell } from "../types/types";
 import { useTranslation } from "react-i18next";
@@ -154,7 +155,7 @@ const BarbellForm: React.FC<BarbellFormProps> = ({
               onClick={handleDelete}
               type="button"
             >
-              <img className="w-6" src="./delete.svg" alt="Delete" />
+              <img className="w-6" src={deleteImg} alt="Delete" />
             </button>
           )}
         </div>

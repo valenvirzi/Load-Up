@@ -1,3 +1,4 @@
+import deleteImg from "../assets/delete.svg";
 import { useTranslation } from "react-i18next";
 import { Exercise, useExercisesStore } from "../context/ExercisesContext";
 import { useState } from "react";
@@ -165,7 +166,7 @@ const ExerciseForm: React.FC<ExerciseFormProps> = ({
               onClick={handleDelete}
               type="button"
             >
-              <img className="w-6" src="./delete.svg" alt="Delete" />
+              <img className="w-6" src={deleteImg} alt="Delete" />
             </button>
           )}
         </div>
