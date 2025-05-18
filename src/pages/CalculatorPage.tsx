@@ -136,7 +136,9 @@ const CalculatorPage: React.FC = () => {
           </span>
         </div>
       </div>
-      <section className="relative top-2 flex w-full flex-col items-stretch gap-1 px-2">
+      <section
+        className={`relative top-2 flex w-full flex-col items-stretch gap-1 px-2`}
+      >
         <label className="text-sm" htmlFor="desiredWeight">
           {t("enterDesiredWeight")} ({massUnit}):
         </label>
@@ -178,14 +180,20 @@ const CalculatorPage: React.FC = () => {
             <img className="w-6" src="./send-arrow.svg" alt="Submit" />
           </button>
         </div>
-        {error ? <p className="text-sm text-red-700">{t(error)}</p> : <></>}
+        {error ? (
+          <p className="absolute -bottom-6 left-2 text-sm text-red-700">
+            {t(error)}
+          </p>
+        ) : (
+          <></>
+        )}
       </section>
       {exercises.length === 0 ? (
         <></>
       ) : (
         <section className="flex justify-center p-2">
           <button
-            className="mt-2 cursor-pointer rounded-full bg-violet-800 p-3 px-4 text-white hover:bg-violet-800/85"
+            className="mt-4 cursor-pointer rounded-full bg-violet-800 p-3 px-4 text-white hover:bg-violet-800/85"
             type="button"
           >
             {t("saveProgressTo")} {currentExercise.name}
