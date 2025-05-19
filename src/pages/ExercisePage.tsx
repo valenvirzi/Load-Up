@@ -1,11 +1,12 @@
 import edit from "../assets/edit.svg";
 import { useParams } from "react-router-dom";
-import { useExercisesStore } from "../context/ExercisesContext";
+import { ExerciseData, useExercisesStore } from "../context/ExercisesContext";
 import { useTranslation } from "react-i18next";
 import sortExerciseHistory, { SortOrder } from "../utils/sortExerciseHistory";
 import { useState } from "react";
 import ExerciseDate from "../components/ExerciseDate";
 import { useSettingsStore } from "../context/SettingsContext";
+import ExerciseHistoryForm from "../components/ExerciseHistoryForm";
 
 const ExercisePage: React.FC = () => {
   // TODO: Componetizar funcionalidades y elementos.
@@ -17,6 +18,9 @@ const ExercisePage: React.FC = () => {
   const { exercises } = useExercisesStore();
   const exercise = exercises.find((e) => e.name === params.exerciseName);
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
+  const [create, setCreate] = useState<boolean>(false);
+  const [currentExerciseData, setCurrentExerciseData] =
+    useState<ExerciseData | null>(null);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
@@ -26,6 +30,7 @@ const ExercisePage: React.FC = () => {
       setSortOrder("desc");
     }
   };
+
   if (params.exerciseName === "all") {
     return (
       <div className="flex flex-col gap-2 px-2">
@@ -54,7 +59,7 @@ const ExercisePage: React.FC = () => {
       <p className="text-sm text-red-700">Error 404: {t("exerciseNotFound")}</p>
     );
   }
-  const sortedHistory = sortExerciseHistory(exercise, sortOrder);
+  const sortedHistory = sortExerciseHistory(exercise.history, sortOrder);
   return (
     <div className="flex flex-col gap-2 px-2">
       <div>
@@ -77,15 +82,15 @@ const ExercisePage: React.FC = () => {
             Con la posibilidad de crear nuevos y editar/eliminar los creados, ordenados del más reciente al más antiguo.
       */}
       <div className="flex items-center justify-between">
-        <h4>{t("sortElements")}</h4>
+        <h4>{t("sortElements")}:</h4>
         <select
           onChange={handleSelectChange}
           name="historyOrder"
           id="historyOrder"
           className="cursor-pointer rounded border-none bg-gray-100 p-2 text-sm dark:bg-zinc-700"
         >
-          <option value="asc">{t("oldFirst")}</option>
           <option value="desc">{t("recentFirst")}</option>
+          <option value="asc">{t("oldFirst")}</option>
         </select>
       </div>
       <ul className="flex flex-col items-stretch border-0 border-t border-t-gray-400">
@@ -95,12 +100,12 @@ const ExercisePage: React.FC = () => {
               className="flex items-stretch justify-between gap-2 border-0 border-b border-b-gray-400 py-2"
               key={index}
             >
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
                 <ExerciseDate
                   latestWorkoutDate={entry.date}
                   displayHour={false}
                 />
-                <div className="flex flex-col gap-1 text-sm opacity-80">
+                <div className="flex flex-col text-sm opacity-80">
                   <span>
                     1RM: {entry.average1RM}
                     {massUnit}
@@ -115,6 +120,7 @@ const ExercisePage: React.FC = () => {
                 <button
                   className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-1.5 hover:bg-stone-700/85"
                   type="button"
+                  onClick={() => setCurrentExerciseData(entry)}
                 >
                   <img className="w-5" src={edit} alt={t("edit")} />
                 </button>
@@ -123,6 +129,16 @@ const ExercisePage: React.FC = () => {
           );
         })}
       </ul>
+      {currentExerciseData === null ? (
+        <></>
+      ) : (
+        <ExerciseHistoryForm
+          create={create}
+          setCreate={setCreate}
+          currentExerciseData={currentExerciseData}
+          setCurrentExerciseData={setCurrentExerciseData}
+        />
+      )}
     </div>
   );
 };

@@ -1,12 +1,12 @@
-import { Exercise, ExerciseData } from "../context/ExercisesContext";
+import { ExerciseData } from "../context/ExercisesContext";
 
 export type SortOrder = "asc" | "desc";
 
 const sortExerciseHistory = (
-  exercise: Exercise,
-  order: SortOrder = "asc",
+  exerciseHistory: ExerciseData[],
+  order: SortOrder = "desc",
 ): ExerciseData[] => {
-  return [...exercise.history].sort((a, b) => {
+  return exerciseHistory.sort((a, b) => {
     const dateA = new Date(
       a.date.year,
       a.date.month - 1,

@@ -64,5 +64,8 @@
   "featureLoadCalc": "Calcular la forma más eficiente de cargar tu barra a la hora de ejercitar.",
   "featureSaveExercises": "Guardar los ejercicios de tu rutina.",
   "featureProgress": "Obtener la información de tu progreso, de forma gráfica, en cada ejercicio a lo largo del tiempo.",
-  "featureSettings": "Acceso a configuraciones en cuanto a: Unidad de peso, Idioma y Tema de la App."
+  "featureSettings": "Acceso a configuraciones en cuanto a: Unidad de peso, Idioma y Tema de la App.",
+  "sortElements": "Orden",
+  "oldFirst": "Antiguo primero",
+  "recentFirst": "Reciente primero"
 }

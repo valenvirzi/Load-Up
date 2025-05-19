@@ -56,7 +56,7 @@ const ExerciseForm: React.FC<ExerciseFormProps> = ({
   const handleNumberBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    // If input empty when no longer focused, then value = 0
+    // If input empty when no longer focused and value = "", then value = 0
     setFormData((prev) => ({
       ...prev,
       [name]: value === "" ? 0 : Number(value),

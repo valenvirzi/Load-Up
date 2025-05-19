@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import sortExerciseHistory from "../utils/sortExerciseHistory";
 
 export type WorkoutDate = {
   year: number;
@@ -29,10 +30,23 @@ export type Exercise = {
 type ExercisesStore = {
   exercises: Exercise[];
   createExercise: (exercise: Exercise) => void;
+  createExerciseData: (
+    name: Exercise["name"],
+    exerciseData: ExerciseData,
+  ) => void;
   deleteExercise: (name: Exercise["name"]) => void;
+  deleteExerciseData: (
+    name: Exercise["name"],
+    exerciseData: ExerciseData,
+  ) => void;
   updateExercise: (
     previousName: Exercise["name"],
     updatedExercise: Exercise,
+  ) => void;
+  updateExerciseData: (
+    name: Exercise["name"],
+    previousExerciseData: ExerciseData,
+    updatedExerciseData: ExerciseData,
   ) => void;
 };
 
@@ -267,6 +281,53 @@ export const useExercisesStore = create(
           };
         }),
 
+      createExerciseData: (
+        exerciseName: string,
+        newExerciseData: ExerciseData,
+      ) =>
+        set((state) => {
+          const foundExerciseIndex = state.exercises.findIndex(
+            (e) => e.name === exerciseName,
+          );
+          if (foundExerciseIndex === -1) {
+            throw new Error("exerciseNotFound");
+          } else {
+            if (
+              state.exercises[foundExerciseIndex].history.some((entry) => {
+                const isSameDate =
+                  entry.date.year === newExerciseData.date.year &&
+                  entry.date.month === newExerciseData.date.month &&
+                  entry.date.day === newExerciseData.date.day &&
+                  entry.date.hour === newExerciseData.date.hour &&
+                  entry.date.minute === newExerciseData.date.minute;
+                return isSameDate;
+              })
+            ) {
+              throw new Error("alreadyDate");
+            } else {
+              const updatedExercises = state.exercises.map(
+                (exercise, index) => {
+                  if (index === foundExerciseIndex) {
+                    const updatedHistory = [
+                      ...state.exercises[foundExerciseIndex].history,
+                    ];
+                    updatedHistory.push({ ...newExerciseData });
+                    const sortedHistory = sortExerciseHistory(updatedHistory);
+                    return {
+                      ...exercise,
+                      history: sortedHistory,
+                    };
+                  }
+                  return exercise;
+                },
+              );
+              return {
+                exercises: updatedExercises,
+              };
+            }
+          }
+        }),
+
       deleteExercise: (exerciseName: string) =>
         set((state) => {
           if (state.exercises.some((e) => e.name === exerciseName)) {
@@ -275,6 +336,40 @@ export const useExercisesStore = create(
             };
           } else {
             throw new Error("exerciseNotFound");
+          }
+        }),
+
+      deleteExerciseData: (exerciseName: string, exerciseData: ExerciseData) =>
+        set((state) => {
+          const foundExerciseIndex = state.exercises.findIndex(
+            (e) => e.name === exerciseName,
+          );
+          if (foundExerciseIndex === -1) {
+            throw new Error("exerciseNotFound");
+          } else {
+            const updatedExercises = state.exercises.map((exercise, index) => {
+              if (index === foundExerciseIndex) {
+                const updatedHistory = exercise.history.filter((entry) => {
+                  const isSameDate =
+                    entry.date.year === exerciseData.date.year &&
+                    entry.date.month === exerciseData.date.month &&
+                    entry.date.day === exerciseData.date.day &&
+                    entry.date.hour === exerciseData.date.hour &&
+                    entry.date.minute === exerciseData.date.minute;
+
+                  return !isSameDate;
+                });
+
+                return {
+                  ...exercise,
+                  history: updatedHistory,
+                };
+              }
+              return exercise;
+            });
+            return {
+              exercises: updatedExercises,
+            };
           }
         }),
 
@@ -300,6 +395,48 @@ export const useExercisesStore = create(
           return {
             exercises: updatedExercises,
           };
+        }),
+
+      updateExerciseData: (
+        exerciseName: string,
+        previousExerciseData: ExerciseData,
+        updatedExerciseData: ExerciseData,
+      ) =>
+        set((state) => {
+          const foundExerciseIndex = state.exercises.findIndex(
+            (e) => e.name === exerciseName,
+          );
+          if (foundExerciseIndex === -1) {
+            throw new Error("exerciseNotFound");
+          } else {
+            const updatedExercises = state.exercises.map((exercise, index) => {
+              if (index === foundExerciseIndex) {
+                const updatedHistory = [
+                  ...state.exercises[foundExerciseIndex].history,
+                ].map((entry) => {
+                  const isSameDate =
+                    entry.date.year === previousExerciseData.date.year &&
+                    entry.date.month === previousExerciseData.date.month &&
+                    entry.date.day === previousExerciseData.date.day &&
+                    entry.date.hour === previousExerciseData.date.hour &&
+                    entry.date.minute === previousExerciseData.date.minute;
+
+                  return isSameDate
+                    ? { ...entry, ...updatedExerciseData }
+                    : entry;
+                });
+
+                return {
+                  ...exercise,
+                  history: updatedHistory,
+                };
+              }
+              return exercise;
+            });
+            return {
+              exercises: updatedExercises,
+            };
+          }
         }),
     }),
     { name: "LoadUpExercises" },
