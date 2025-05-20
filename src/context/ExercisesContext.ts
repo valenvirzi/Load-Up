@@ -10,7 +10,7 @@ export type WorkoutDate = {
   minute: number;
 };
 
-export type ExerciseData = {
+export type ExerciseRecord = {
   date: WorkoutDate;
   average1RM: number;
   workoutVolume: number;
@@ -24,29 +24,29 @@ export type Exercise = {
   average1RM: number | null;
   workoutVolume: number | null;
   latestWorkoutDate: WorkoutDate | null;
-  history: ExerciseData[];
+  history: ExerciseRecord[];
 };
 
 type ExercisesStore = {
   exercises: Exercise[];
   createExercise: (exercise: Exercise) => void;
-  createExerciseData: (
+  createExerciseRecord: (
     name: Exercise["name"],
-    exerciseData: ExerciseData,
+    exerciseRecord: ExerciseRecord,
   ) => void;
   deleteExercise: (name: Exercise["name"]) => void;
-  deleteExerciseData: (
+  deleteExerciseRecord: (
     name: Exercise["name"],
-    exerciseData: ExerciseData,
+    exerciseRecord: ExerciseRecord,
   ) => void;
   updateExercise: (
     previousName: Exercise["name"],
     updatedExercise: Exercise,
   ) => void;
-  updateExerciseData: (
+  updateExerciseRecord: (
     name: Exercise["name"],
-    previousExerciseData: ExerciseData,
-    updatedExerciseData: ExerciseData,
+    previousExerciseRecord: ExerciseRecord,
+    updatedExerciseRecord: ExerciseRecord,
   ) => void;
 };
 
@@ -281,9 +281,9 @@ export const useExercisesStore = create(
           };
         }),
 
-      createExerciseData: (
+      createExerciseRecord: (
         exerciseName: string,
-        newExerciseData: ExerciseData,
+        newExerciseRecord: ExerciseRecord,
       ) =>
         set((state) => {
           const foundExerciseIndex = state.exercises.findIndex(
@@ -295,11 +295,11 @@ export const useExercisesStore = create(
             if (
               state.exercises[foundExerciseIndex].history.some((entry) => {
                 const isSameDate =
-                  entry.date.year === newExerciseData.date.year &&
-                  entry.date.month === newExerciseData.date.month &&
-                  entry.date.day === newExerciseData.date.day &&
-                  entry.date.hour === newExerciseData.date.hour &&
-                  entry.date.minute === newExerciseData.date.minute;
+                  entry.date.year === newExerciseRecord.date.year &&
+                  entry.date.month === newExerciseRecord.date.month &&
+                  entry.date.day === newExerciseRecord.date.day &&
+                  entry.date.hour === newExerciseRecord.date.hour &&
+                  entry.date.minute === newExerciseRecord.date.minute;
                 return isSameDate;
               })
             ) {
@@ -311,7 +311,7 @@ export const useExercisesStore = create(
                     const updatedHistory = [
                       ...state.exercises[foundExerciseIndex].history,
                     ];
-                    updatedHistory.push({ ...newExerciseData });
+                    updatedHistory.push({ ...newExerciseRecord });
                     const sortedHistory = sortExerciseHistory(updatedHistory);
                     return {
                       ...exercise,
@@ -339,7 +339,10 @@ export const useExercisesStore = create(
           }
         }),
 
-      deleteExerciseData: (exerciseName: string, exerciseData: ExerciseData) =>
+      deleteExerciseRecord: (
+        exerciseName: string,
+        exerciseRecord: ExerciseRecord,
+      ) =>
         set((state) => {
           const foundExerciseIndex = state.exercises.findIndex(
             (e) => e.name === exerciseName,
@@ -351,11 +354,11 @@ export const useExercisesStore = create(
               if (index === foundExerciseIndex) {
                 const updatedHistory = exercise.history.filter((entry) => {
                   const isSameDate =
-                    entry.date.year === exerciseData.date.year &&
-                    entry.date.month === exerciseData.date.month &&
-                    entry.date.day === exerciseData.date.day &&
-                    entry.date.hour === exerciseData.date.hour &&
-                    entry.date.minute === exerciseData.date.minute;
+                    entry.date.year === exerciseRecord.date.year &&
+                    entry.date.month === exerciseRecord.date.month &&
+                    entry.date.day === exerciseRecord.date.day &&
+                    entry.date.hour === exerciseRecord.date.hour &&
+                    entry.date.minute === exerciseRecord.date.minute;
 
                   return !isSameDate;
                 });
@@ -397,10 +400,10 @@ export const useExercisesStore = create(
           };
         }),
 
-      updateExerciseData: (
+      updateExerciseRecord: (
         exerciseName: string,
-        previousExerciseData: ExerciseData,
-        updatedExerciseData: ExerciseData,
+        previousExerciseRecord: ExerciseRecord,
+        updatedExerciseRecord: ExerciseRecord,
       ) =>
         set((state) => {
           const foundExerciseIndex = state.exercises.findIndex(
@@ -415,14 +418,14 @@ export const useExercisesStore = create(
                   ...state.exercises[foundExerciseIndex].history,
                 ].map((entry) => {
                   const isSameDate =
-                    entry.date.year === previousExerciseData.date.year &&
-                    entry.date.month === previousExerciseData.date.month &&
-                    entry.date.day === previousExerciseData.date.day &&
-                    entry.date.hour === previousExerciseData.date.hour &&
-                    entry.date.minute === previousExerciseData.date.minute;
+                    entry.date.year === previousExerciseRecord.date.year &&
+                    entry.date.month === previousExerciseRecord.date.month &&
+                    entry.date.day === previousExerciseRecord.date.day &&
+                    entry.date.hour === previousExerciseRecord.date.hour &&
+                    entry.date.minute === previousExerciseRecord.date.minute;
 
                   return isSameDate
-                    ? { ...entry, ...updatedExerciseData }
+                    ? { ...entry, ...updatedExerciseRecord }
                     : entry;
                 });
 

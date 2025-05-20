@@ -46,6 +46,26 @@ const PlateForm: React.FC<PlateFormProps> = ({
     }
   };
 
+  const handleIntChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    if (value === "") {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+      return;
+    }
+
+    if (!value.includes(".")) {
+      const parsedValue = parseInt(value, 10);
+      if (
+        !isNaN(parsedValue) &&
+        parsedValue > 0 &&
+        String(parsedValue) === value
+      ) {
+        setFormData((prev) => ({ ...prev, [name]: parsedValue }));
+      }
+    }
+  };
+
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -158,9 +178,10 @@ const PlateForm: React.FC<PlateFormProps> = ({
                 type="number"
                 name="weight"
                 id="weight"
+                placeholder="0"
                 min={0}
                 step={0.05}
-                value={formData.weight}
+                value={formData.weight === 0 ? "" : formData.weight}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -195,12 +216,15 @@ const PlateForm: React.FC<PlateFormProps> = ({
               <input
                 className="w-1/2 rounded bg-gray-100 p-2 dark:bg-zinc-700"
                 type="number"
+                placeholder="0"
                 min={2}
                 step={1}
                 name="availableAmount"
                 id="availableAmount"
-                value={formData.availableAmount}
-                onChange={handleChange}
+                value={
+                  formData.availableAmount === 0 ? "" : formData.availableAmount
+                }
+                onChange={handleIntChange}
                 onBlur={handleBlur}
               />
               <span className="text-black/65 dark:text-white/65">u.</span>

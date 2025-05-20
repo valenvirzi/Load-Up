@@ -53,6 +53,26 @@ const ExerciseForm: React.FC<ExerciseFormProps> = ({
     }
   };
 
+  const handleIntChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    if (value === "") {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+      return;
+    }
+
+    if (!value.includes(".")) {
+      const parsedValue = parseInt(value, 10);
+      if (
+        !isNaN(parsedValue) &&
+        parsedValue > 0 &&
+        String(parsedValue) === value
+      ) {
+        setFormData((prev) => ({ ...prev, [name]: parsedValue }));
+      }
+    }
+  };
+
   const handleNumberBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -81,7 +101,6 @@ const ExerciseForm: React.FC<ExerciseFormProps> = ({
     e.preventDefault();
     setError(null);
 
-    // TODO: Add fields validation and Errors
     const name = formData.name;
     const sets = Number(formData.sets);
     const repsPerSet = Number(formData.repsPerSet);
@@ -198,11 +217,12 @@ const ExerciseForm: React.FC<ExerciseFormProps> = ({
                 className="w-1/2 rounded bg-gray-100 p-2 dark:bg-zinc-700"
                 type="number"
                 name="sets"
+                placeholder="0"
                 min={1}
                 step={1}
                 id="sets"
-                value={formData.sets}
-                onChange={handleNumberChange}
+                value={formData.sets === 0 ? "" : formData.sets}
+                onChange={handleIntChange}
                 onBlur={handleNumberBlur}
               />
             </div>
@@ -217,11 +237,12 @@ const ExerciseForm: React.FC<ExerciseFormProps> = ({
                 className="w-1/2 rounded bg-gray-100 p-2 dark:bg-zinc-700"
                 type="number"
                 name="repsPerSet"
+                placeholder="0"
                 min={1}
                 step={1}
                 id="repsPerSet"
-                value={formData.repsPerSet}
-                onChange={handleNumberChange}
+                value={formData.repsPerSet === 0 ? "" : formData.repsPerSet}
+                onChange={handleIntChange}
                 onBlur={handleNumberBlur}
               />
             </div>
@@ -235,10 +256,13 @@ const ExerciseForm: React.FC<ExerciseFormProps> = ({
                 className="w-1/2 rounded bg-gray-100 p-2 dark:bg-zinc-700"
                 type="number"
                 name="currentWeight"
+                placeholder="0"
                 min={0}
                 step={0.05}
                 id="currentWeight"
-                value={formData.currentWeight ?? 0}
+                value={
+                  formData.currentWeight === 0 ? "" : formData.currentWeight
+                }
                 onChange={handleNumberChange}
                 onBlur={handleNumberBlur}
               />

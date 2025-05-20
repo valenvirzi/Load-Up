@@ -26,9 +26,9 @@
   "update": "Actualizar",
   "add": "Añadir",
   "confirmDelete": "¿Está seguro que desea eliminarlo?",
-  "alreadyPlate": "Ya existe un disco de ese peso",
-  "weightAboveZero": "El peso debe ser mayor a 0",
-  "minAmountTwo": "La cantidad disponible de discos debe ser de al menos 2 unidades",
+  "alreadyPlate": "Ya existe un disco de ese peso.",
+  "weightAboveZero": "El peso debe ser mayor a cero.",
+  "minAmountTwo": "La cantidad disponible de discos debe ser de al menos 2 unidades.",
   "colorNotValid": "El color seleccionado no es válido",
   "addNewBarbell": "Añadir nueva barra",
   "type": "Tipo",
@@ -67,5 +67,10 @@
   "featureSettings": "Acceso a configuraciones en cuanto a: Unidad de peso, Idioma y Tema de la App.",
   "sortElements": "Orden",
   "oldFirst": "Antiguo primero",
-  "recentFirst": "Reciente primero"
+  "recentFirst": "Reciente primero",
+  "createExerciseRecord": "Create exercise record",
+  "editExerciseRecord": "Edit exercise record",
+  "invalidName": "Por favor, ingresa un nombre válido.",
+  "setsAboveZero": "La cantidad de series debe ser mayor que cero.",
+  "repsPerSetAboveZero": "La cantidad de repeticiones por serie debe ser mayor que cero."
 }

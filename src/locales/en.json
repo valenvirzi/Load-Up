@@ -27,7 +27,7 @@
   "add": "Add",
   "confirmDelete": "Are you sure you want to delete this item?",
   "alreadyPlate": "A plate of that weight already exists.",
-  "weightAboveZero": "Weight must be greater than 0.",
+  "weightAboveZero": "Weight must be greater than zero.",
   "minAmountTwo": "The available amount of plates must be at least 2.",
   "colorNotValid": "Invalid color selected.",
   "addNewBarbell": "Add new barbell",
@@ -67,5 +67,10 @@
   "featureSettings": "Access settings for: Weight unit, Language, and App Theme.",
   "sortElements": "Sort",
   "oldFirst": "Older first",
-  "recentFirst": "Recent first"
+  "recentFirst": "Recent first",
+  "createExerciseRecord": "Create exercise record",
+  "editExerciseRecord": "Edit exercise record",
+  "invalidName": "Please enter a valid name.",
+  "setsAboveZero": "The number of sets must be greater than zero.",
+  "repsPerSetAboveZero": "The number of repetitions per set must be greater than zero."
 }

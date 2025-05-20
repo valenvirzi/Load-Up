@@ -1,6 +1,6 @@
 import edit from "../assets/edit.svg";
 import { useParams } from "react-router-dom";
-import { ExerciseData, useExercisesStore } from "../context/ExercisesContext";
+import { ExerciseRecord, useExercisesStore } from "../context/ExercisesContext";
 import { useTranslation } from "react-i18next";
 import sortExerciseHistory, { SortOrder } from "../utils/sortExerciseHistory";
 import { useState } from "react";
@@ -19,8 +19,8 @@ const ExercisePage: React.FC = () => {
   const exercise = exercises.find((e) => e.name === params.exerciseName);
   const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
   const [create, setCreate] = useState<boolean>(false);
-  const [currentExerciseData, setCurrentExerciseData] =
-    useState<ExerciseData | null>(null);
+  const [selectedExerciseRecord, setSelectedExerciseRecord] =
+    useState<ExerciseRecord | null>(null);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
@@ -120,7 +120,7 @@ const ExercisePage: React.FC = () => {
                 <button
                   className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-1.5 hover:bg-stone-700/85"
                   type="button"
-                  onClick={() => setCurrentExerciseData(entry)}
+                  onClick={() => setSelectedExerciseRecord(entry)}
                 >
                   <img className="w-5" src={edit} alt={t("edit")} />
                 </button>
@@ -129,14 +129,15 @@ const ExercisePage: React.FC = () => {
           );
         })}
       </ul>
-      {currentExerciseData === null ? (
+      {selectedExerciseRecord === null ? (
         <></>
       ) : (
         <ExerciseHistoryForm
+          exercise={exercise}
           create={create}
           setCreate={setCreate}
-          currentExerciseData={currentExerciseData}
-          setCurrentExerciseData={setCurrentExerciseData}
+          selectedExerciseRecord={selectedExerciseRecord}
+          setSelectedExerciseRecord={setSelectedExerciseRecord}
         />
       )}
     </div>
