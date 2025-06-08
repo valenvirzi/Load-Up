@@ -74,5 +74,9 @@
   "setsAboveZero": "La cantidad de series debe ser mayor que cero.",
   "repsPerSetAboveZero": "La cantidad de repeticiones por serie debe ser mayor que cero.",
   "date": "Fecha",
-  "calculate?": "¿Calcular?"
+  "calculate?": "¿Calcular?",
+  "reps": "Repeticiones",
+  "addNewRecord": "Añadir nuevo registro",
+  "needMoreData": "Se necesitan más datos para mostrar el gráfico",
+  "noExerciseRecords": "No hay registros para este ejercicio"
 }

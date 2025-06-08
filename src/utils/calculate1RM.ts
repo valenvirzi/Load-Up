@@ -1,6 +1,6 @@
 const calculate1RM = (weight: number, reps: number): number => {
   if (weight <= 0 || reps <= 0) {
-    throw new Error("invalidWeightOrReps");
+    return 0;
   }
 
   const epleyMethod1RM: number = weight * (1 + reps / 30);

@@ -7,6 +7,7 @@ import { useState } from "react";
 import ExerciseDate from "../components/ExerciseDate";
 import { useSettingsStore } from "../context/SettingsContext";
 import ExerciseHistoryForm from "../components/ExerciseHistoryForm";
+import ExerciseChart from "../components/ExerciseChart";
 
 const ExercisePage: React.FC = () => {
   // TODO: Componetizar funcionalidades y elementos.
@@ -64,22 +65,29 @@ const ExercisePage: React.FC = () => {
       <div>
         <h3 className="text-xl">{exercise.name}</h3>
       </div>
-      {/* TODO: Insertar 2 gráficos de línea (o hacerlo en un solo gráfico de doble Axis Y con opción de TOGGLE):
-            * Gráfico 1:
-                - Eje X: Fechas
-                - Eje Y: 1RM (Kg)
-            * Gráfico 2:
-                - Eje X: Fechas
-                - Eje Y: Volumen de Entrenamiento (Kg)
-
-      */}
-
-      {/* TODO: Agregar una lista de elementos que contengan:
-            - Fecha
-            - 1RM
-            - Volumen de Entrenamiento
-            Con la posibilidad de crear nuevos y editar/eliminar los creados, ordenados del más reciente al más antiguo.
-      */}
+      <ExerciseChart history={sortedHistory} />
+      <button
+        className="mt-2 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white hover:bg-violet-800/85"
+        onClick={() => {
+          setCreate(true);
+          const newDate = new Date();
+          setSelectedExerciseRecord({
+            date: {
+              year: newDate.getFullYear(),
+              month: newDate.getMonth() + 1,
+              day: newDate.getDate(),
+              hour: newDate.getHours(),
+              minute: newDate.getMinutes(),
+            },
+            average1RM: 0,
+            workoutVolume: 0,
+          });
+        }}
+        type="button"
+      >
+        <span>{t("addNewRecord")}</span>
+      </button>
+      <hr className="border-0 border-b border-b-gray-400" />
       <div className="flex items-center justify-between">
         <h4>{t("sortElements")}:</h4>
         <select
@@ -92,42 +100,50 @@ const ExercisePage: React.FC = () => {
           <option value="asc">{t("oldFirst")}</option>
         </select>
       </div>
-      <ul className="flex flex-col items-stretch border-0 border-t border-t-gray-400">
-        {sortedHistory.map((entry, index) => {
-          return (
-            <li
-              className="flex items-stretch justify-between gap-2 border-0 border-b border-b-gray-400 py-2"
-              key={index}
-            >
-              <div className="flex flex-col gap-1">
-                <ExerciseDate
-                  latestWorkoutDate={entry.date}
-                  displayHour={false}
-                />
-                <div className="flex flex-col text-sm opacity-80">
-                  <span>
-                    1RM: {entry.average1RM}
-                    {massUnit}
-                  </span>
-                  <span>
-                    {t("workoutVolume")}: {entry.workoutVolume}
-                    {massUnit}
-                  </span>
+
+      {sortedHistory.length === 0 ? (
+        <p className="mt-2 text-center text-sm text-gray-400">
+          {t("noExerciseRecords")}
+        </p>
+      ) : (
+        <ul className="flex flex-col items-stretch border-0 border-t border-t-gray-400">
+          {sortedHistory.map((entry, index) => {
+            return (
+              <li
+                className="flex items-stretch justify-between gap-2 border-0 border-b border-b-gray-400 py-2"
+                key={index}
+              >
+                <div className="flex flex-col gap-1">
+                  <ExerciseDate
+                    latestWorkoutDate={entry.date}
+                    displayHour={false}
+                  />
+                  <div className="flex flex-col text-sm opacity-80">
+                    <span>
+                      1RM: {entry.average1RM}
+                      {massUnit}
+                    </span>
+                    <span>
+                      {t("workoutVolume")}: {entry.workoutVolume}
+                      {massUnit}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center">
-                <button
-                  className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-1.5 hover:bg-stone-700/85"
-                  type="button"
-                  onClick={() => setSelectedExerciseRecord(entry)}
-                >
-                  <img className="w-5" src={edit} alt={t("edit")} />
-                </button>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+                <div className="flex items-center">
+                  <button
+                    className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-1.5 hover:bg-stone-700/85"
+                    type="button"
+                    onClick={() => setSelectedExerciseRecord(entry)}
+                  >
+                    <img className="w-5" src={edit} alt={t("edit")} />
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+
       {selectedExerciseRecord === null ? (
         <></>
       ) : (

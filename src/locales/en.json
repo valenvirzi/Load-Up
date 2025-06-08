@@ -74,5 +74,9 @@
   "setsAboveZero": "The number of sets must be greater than zero.",
   "repsPerSetAboveZero": "The number of repetitions per set must be greater than zero.",
   "date": "Date",
-  "calculate?": "Calculate?"
+  "calculate?": "Calculate?",
+  "reps": "Reps",
+  "addNewRecord": "Add new record",
+  "needMoreData": "Need more data to show chart",
+  "noExerciseRecords": "No exercise records available"
 }
