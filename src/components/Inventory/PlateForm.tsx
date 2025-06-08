@@ -1,9 +1,9 @@
-import deleteImg from "../assets/delete.svg";
+import deleteImg from "../../assets/delete.svg";
 import { useState } from "react";
-import { Plate } from "../types/types";
+import { Plate } from "../../types/types";
 import { useTranslation } from "react-i18next";
-import { useInventoryStore } from "../context/InventoryContext";
-import { useSettingsStore } from "../context/SettingsContext";
+import { useInventoryStore } from "../../context/InventoryContext";
+import { useSettingsStore } from "../../context/SettingsContext";
 
 interface PlateFormProps {
   create: boolean;

@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { useInventoryStore } from "../context/InventoryContext";
+import { useInventoryStore } from "../../context/InventoryContext";
 import { useState } from "react";
-import { Barbell } from "../types/types";
+import { Barbell } from "../../types/types";
 import BarbellForm from "./BarbellForm";
 import BarbellInventoryItem from "./BarbellInventoryItem";
 

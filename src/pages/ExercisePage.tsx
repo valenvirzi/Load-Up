@@ -10,7 +10,6 @@ import ExerciseHistoryForm from "../components/ExerciseHistoryForm";
 
 const ExercisePage: React.FC = () => {
   // TODO: Componetizar funcionalidades y elementos.
-  // TODO: Agregar Formulario para la edición y eliminación de los elementos del Historial
 
   const params = useParams<{ exerciseName: string }>();
   const { massUnit } = useSettingsStore();

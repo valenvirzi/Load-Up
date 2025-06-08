@@ -1,6 +1,4 @@
-// TODO: Design this page
 import radarGraph from "../assets/radar-graph.svg";
-
 import { useTranslation } from "react-i18next";
 import { Exercise, useExercisesStore } from "../context/ExercisesContext";
 import { useState } from "react";

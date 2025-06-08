@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Exercise } from "../context/ExercisesContext";
+import { Exercise } from "../../context/ExercisesContext";
 
 interface ExerciseSelectorProps {
   exercises: Exercise[];

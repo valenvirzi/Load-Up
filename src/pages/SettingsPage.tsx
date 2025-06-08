@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import Settings from "../components/Settings";
+import Settings from "../components/Settings/Settings";
 
 const SettingsPage: React.FC = () => {
   const { t } = useTranslation();

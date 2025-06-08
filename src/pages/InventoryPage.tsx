@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import InventoryComponentSelector from "../components/InventoryComponentSelector";
+import InventoryComponentSelector from "../components/Inventory/InventoryComponentSelector";
 import { InventoryComponent } from "../types/types";
-import PlatesInventory from "../components/PlatesInventory";
-import BarbellsInventory from "../components/BarbellsInventory";
+import PlatesInventory from "../components/Inventory/PlatesInventory";
+import BarbellsInventory from "../components/Inventory/BarbellsInventory";
 
 const InventoryPage: React.FC = () => {
   const { t } = useTranslation();

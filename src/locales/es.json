@@ -39,7 +39,7 @@
   "addNewExercise": "Añadir nuevo ejercicio",
   "sets": "Series",
   "repsPerSet": "Repeticiones por serie",
-  "workoutVolume": "Volumen de entren.",
+  "workoutVolume": "Vol. de entren.",
   "edit": "Editar",
   "graph": "Gráfico",
   "alreadyExerciseName": "Ya existe un ejercicio con ese nombre.",
@@ -55,7 +55,7 @@
   "noPlatesInInventory": "No hay discos en el inventario.",
   "noBarbellsInInventory": "No hay barras en el inventario.",
   "welcomeToLoadUp": "¡Bienvenido a Load Up!",
-  "errorHasOcurred": "Ha ocurrido un error inesperado. Vuelve a la página de inicio.",
+  "errorHasOccurred": "Ha ocurrido un error inesperado. Vuelve a la página de inicio.",
   "homePage": "Página de Inicio",
   "saveProgressTo": "Guardar progreso en",
   "allExercises": "Todos los ejercicios",
@@ -68,9 +68,11 @@
   "sortElements": "Orden",
   "oldFirst": "Antiguo primero",
   "recentFirst": "Reciente primero",
-  "createExerciseRecord": "Create exercise record",
-  "editExerciseRecord": "Edit exercise record",
+  "createExerciseRecord": "Crear registro",
+  "editExerciseRecord": "Editar registro",
   "invalidName": "Por favor, ingresa un nombre válido.",
   "setsAboveZero": "La cantidad de series debe ser mayor que cero.",
-  "repsPerSetAboveZero": "La cantidad de repeticiones por serie debe ser mayor que cero."
+  "repsPerSetAboveZero": "La cantidad de repeticiones por serie debe ser mayor que cero.",
+  "date": "Fecha",
+  "calculate?": "¿Calcular?"
 }

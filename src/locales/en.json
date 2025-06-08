@@ -55,7 +55,7 @@
   "noPlatesInInventory": "No plates in the inventory.",
   "noBarbellsInInventory": "No barbells in the inventory.",
   "welcomeToLoadUp": "Welcome to Load Up!",
-  "errorHasOcurred": "An unexpected error has occurred. Go back to the Home page.",
+  "errorHasOccurred": "An unexpected error has occurred. Go back to the Home page.",
   "homePage": "Home page",
   "saveProgressTo": "Save progress to",
   "allExercises": "All exercises",
@@ -72,5 +72,7 @@
   "editExerciseRecord": "Edit exercise record",
   "invalidName": "Please enter a valid name.",
   "setsAboveZero": "The number of sets must be greater than zero.",
-  "repsPerSetAboveZero": "The number of repetitions per set must be greater than zero."
+  "repsPerSetAboveZero": "The number of repetitions per set must be greater than zero.",
+  "date": "Date",
+  "calculate?": "Calculate?"
 }

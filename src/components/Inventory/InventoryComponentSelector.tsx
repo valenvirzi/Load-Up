@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import {
   InventoryComponent,
   InventoryComponentSelectorProps,
-} from "../types/types";
+} from "../../types/types";
 
 const InventoryComponentSelector: React.FC<InventoryComponentSelectorProps> = ({
   inventoryDisplayed,

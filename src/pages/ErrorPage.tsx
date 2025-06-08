@@ -1,5 +1,3 @@
-// TODO: Design this page
-
 import { useTranslation } from "react-i18next";
 import Footer from "../components/Footer";
 import { useSettingsStore } from "../context/SettingsContext";
@@ -16,7 +14,7 @@ const ErrorPage: React.FC = () => {
         <h1 className="text-3xl">Error</h1>
       </div>
       <div className="p-4 px-2">
-        <p>{t("errorHasOcurred")}</p>
+        <p>{t("errorHasOccurred")}</p>
       </div>
       <div className="mt-4 self-center">
         <Link

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Barbell } from "../types/types";
-import { useSettingsStore } from "../context/SettingsContext";
+import { Barbell } from "../../types/types";
+import { useSettingsStore } from "../../context/SettingsContext";
 
 interface BarbellSelectorProps {
   barbells: Barbell[];

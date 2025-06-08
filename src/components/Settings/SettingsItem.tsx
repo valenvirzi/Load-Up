@@ -1,4 +1,4 @@
-import { SettingsItemProps } from "../types/types";
+import { SettingsItemProps } from "../../types/types";
 
 const SettingsItem: React.FC<SettingsItemProps> = ({
   label,

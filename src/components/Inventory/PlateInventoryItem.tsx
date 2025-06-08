@@ -1,5 +1,5 @@
-import { Plate } from "../types/types";
-import { useSettingsStore } from "../context/SettingsContext";
+import { Plate } from "../../types/types";
+import { useSettingsStore } from "../../context/SettingsContext";
 
 interface PlateInventoryItemProps {
   plate: Plate;

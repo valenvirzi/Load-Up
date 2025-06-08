@@ -1,7 +1,7 @@
-import edit from "../assets/edit.svg";
+import edit from "../../assets/edit.svg";
 import { useTranslation } from "react-i18next";
-import { useSettingsStore } from "../context/SettingsContext";
-import { Barbell } from "../types/types";
+import { useSettingsStore } from "../../context/SettingsContext";
+import { Barbell } from "../../types/types";
 
 const BARBELLS_IMG: Record<Barbell["type"], string> = {
   Standard: "./straight-barbell-half.png",

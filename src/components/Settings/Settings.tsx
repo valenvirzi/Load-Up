@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { useSettingsStore } from "../context/SettingsContext";
-import { Language, MassUnit, Theme } from "../types/types";
+import { useSettingsStore } from "../../context/SettingsContext";
+import { Language, MassUnit, Theme } from "../../types/types";
 import SettingsItem from "./SettingsItem";
 
 const Settings: React.FC = () => {
@@ -74,7 +74,7 @@ const Settings: React.FC = () => {
           id={id}
           label={label}
           options={options}
-          onChange={(e) =>
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
             handleChange(id as keyof typeof settings, e.target.value)
           }
           value={stateValues[id as keyof typeof settings]}

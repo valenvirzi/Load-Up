@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { useInventoryStore } from "../context/InventoryContext";
+import { useInventoryStore } from "../../context/InventoryContext";
 import PlateInventoryItem from "./PlateInventoryItem";
 import { useState } from "react";
-import { Plate } from "../types/types";
+import { Plate } from "../../types/types";
 import PlateForm from "./PlateForm";
 
 const PlatesInventory: React.FC = () => {
