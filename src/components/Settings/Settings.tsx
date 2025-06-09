@@ -34,8 +34,8 @@ const Settings: React.FC = () => {
     language: {
       label: t("language"),
       options: [
-        { value: "en", label: t("english") },
         { value: "es", label: t("spanish") },
+        { value: "en", label: t("english") },
       ],
     },
     theme: {

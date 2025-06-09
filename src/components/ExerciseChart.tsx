@@ -66,7 +66,7 @@ const ExerciseChart: React.FC<ExerciseChartProps> = ({ history }) => {
   // 'value' should be = to 'dataKey' of Line components,
   // 'color' should be = to 'stroke' properties of components.
   const legendPayload = [
-    { value: "average1RM", type: "line", color: "#5d0ec0" },
+    { value: "average1RM", type: "line", color: "#6f35b8" },
     { value: "workoutVolume", type: "line", color: "#3dd476" },
   ];
 
@@ -105,21 +105,21 @@ const ExerciseChart: React.FC<ExerciseChartProps> = ({ history }) => {
 
           <XAxis
             dataKey="date" // Data key for the labels
-            tick={{ fill: "#666", fontSize: 12, fontWeight: 700 }}
+            tick={{ fill: "#757575", fontSize: 12, fontWeight: 700 }}
             interval="preserveStartEnd" // Prevents labels from overlapping
             angle={-30} // Angle the labels for better readability
             textAnchor="end"
             height={60} // Vertical space for labels
-            stroke="#666" // Line color
-            className="dark:stroke-gray-400 dark:text-gray-400" // Dark mode styling
+            stroke="#757575" // Line color
+            className="dark:stroke-gray-200 dark:text-gray-200" // Dark mode styling
           />
 
           {/* Left Y-Axis for average1RM */}
           <YAxis
             domain={["dataMin - 2", "dataMax + 2"]} // Small "padding" top and bottom
             yAxisId="left" // ID for the axis
-            stroke="#5d0ec0" // Line color matching the 1RM line
-            tick={{ fill: "#5d0ec0", fontSize: 12, fontWeight: 700 }}
+            stroke="#6f35b8" // Line color matching the 1RM line
+            tick={{ fill: "#6f35b8", fontSize: 12, fontWeight: 700 }}
           />
 
           {/* Right Y-Axis for workoutVolume */}
@@ -149,7 +149,7 @@ const ExerciseChart: React.FC<ExerciseChartProps> = ({ history }) => {
             dataKey="average1RM"
             name="1RM" // Tooltip name
             strokeWidth={2}
-            stroke="#5d0ec0" // Line color
+            stroke="#6f35b8" // Line color
             activeDot={{ r: 6 }} // Larger dot on hover
           />
 
