@@ -2,8 +2,8 @@ import radarGraph from "../assets/radar-graph.svg";
 import { useTranslation } from "react-i18next";
 import { Exercise, useExercisesStore } from "../context/ExercisesContext";
 import { useState } from "react";
-import ExerciseForm from "../components/ExerciseForm";
-import ExerciseItem from "../components/ExerciseItem";
+import ExerciseForm from "../components/Exercises/ExerciseForm";
+import ExerciseItem from "../components/Exercises/ExerciseItem";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const ExercisesPage: React.FC = () => {

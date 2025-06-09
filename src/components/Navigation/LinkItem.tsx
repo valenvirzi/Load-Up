@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { LinkItemProps } from "../types/types";
+import { LinkItemProps } from "../../types/types";
 
 const LinkItem: React.FC<LinkItemProps> = ({ link }) => {
   return (

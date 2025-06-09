@@ -1,9 +1,9 @@
-import inventory from "../assets/inventory.svg";
-import exercises from "../assets/exercises.svg";
-import calculator from "../assets/calculator.svg";
-import settings from "../assets/settings.svg";
+import inventory from "../../assets/inventory.svg";
+import exercises from "../../assets/exercises.svg";
+import calculator from "../../assets/calculator.svg";
+import settings from "../../assets/settings.svg";
 import { useTranslation } from "react-i18next";
-import { Link } from "../types/types";
+import { Link } from "../../types/types";
 import LinkItem from "./LinkItem";
 
 const Footer: React.FC = () => {

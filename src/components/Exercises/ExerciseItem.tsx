@@ -1,8 +1,8 @@
-import graph from "../assets/graph.svg";
-import edit from "../assets/edit.svg";
+import graph from "../../assets/graph.svg";
+import edit from "../../assets/edit.svg";
 import { useTranslation } from "react-i18next";
-import { Exercise } from "../context/ExercisesContext";
-import { useSettingsStore } from "../context/SettingsContext";
+import { Exercise } from "../../context/ExercisesContext";
+import { useSettingsStore } from "../../context/SettingsContext";
 import ExerciseDate from "./ExerciseDate";
 import { Link } from "react-router-dom";
 

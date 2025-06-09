@@ -4,10 +4,10 @@ import { ExerciseRecord, useExercisesStore } from "../context/ExercisesContext";
 import { useTranslation } from "react-i18next";
 import sortExerciseHistory, { SortOrder } from "../utils/sortExerciseHistory";
 import { useState } from "react";
-import ExerciseDate from "../components/ExerciseDate";
+import ExerciseDate from "../components/Exercises/ExerciseDate";
 import { useSettingsStore } from "../context/SettingsContext";
-import ExerciseHistoryForm from "../components/ExerciseHistoryForm";
-import ExerciseChart from "../components/ExerciseChart";
+import ExerciseHistoryForm from "../components/Exercises/ExerciseHistoryForm";
+import ExerciseChart from "../components/Exercises/ExerciseChart";
 
 const ExercisePage: React.FC = () => {
   // TODO: Componetizar funcionalidades y elementos.

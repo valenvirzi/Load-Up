@@ -1,10 +1,10 @@
-import deleteImg from "../assets/delete.svg";
+import deleteImg from "../../assets/delete.svg";
 import { useTranslation } from "react-i18next";
-import { Exercise, useExercisesStore } from "../context/ExercisesContext";
+import { Exercise, useExercisesStore } from "../../context/ExercisesContext";
 import { useState } from "react";
-import getWorkoutDate from "../utils/getWorkoutDate";
-import { useSettingsStore } from "../context/SettingsContext";
-import calculate1RM from "../utils/calculate1RM";
+import getWorkoutDate from "../../utils/getWorkoutDate";
+import { useSettingsStore } from "../../context/SettingsContext";
+import calculate1RM from "../../utils/calculate1RM";
 
 interface ExerciseFormProps {
   create: boolean;

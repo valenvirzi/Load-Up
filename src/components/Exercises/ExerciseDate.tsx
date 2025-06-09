@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { WorkoutDate } from "../context/ExercisesContext";
-import workoutDateToText from "../utils/workoutDateToText";
+import { WorkoutDate } from "../../context/ExercisesContext";
+import workoutDateToText from "../../utils/workoutDateToText";
 
 interface ExerciseDateProps {
   latestWorkoutDate: WorkoutDate | null;

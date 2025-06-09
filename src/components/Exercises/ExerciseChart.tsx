@@ -7,9 +7,9 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
-import { ExerciseRecord } from "../context/ExercisesContext";
-import sortExerciseHistory from "../utils/sortExerciseHistory";
-import workoutDateToText from "../utils/workoutDateToText";
+import { ExerciseRecord } from "../../context/ExercisesContext";
+import sortExerciseHistory from "../../utils/sortExerciseHistory";
+import workoutDateToText from "../../utils/workoutDateToText";
 import { useTranslation } from "react-i18next";
 
 interface ExerciseChartProps {

@@ -1,14 +1,14 @@
-import deleteImg from "../assets/delete.svg";
-import tickImg from "../assets/tick.svg";
+import deleteImg from "../../assets/delete.svg";
+import tickImg from "../../assets/tick.svg";
 import { useEffect, useState } from "react";
 import {
   Exercise,
   ExerciseRecord,
   useExercisesStore,
-} from "../context/ExercisesContext";
+} from "../../context/ExercisesContext";
 import { useTranslation } from "react-i18next";
-import { useSettingsStore } from "../context/SettingsContext";
-import calculate1RM from "../utils/calculate1RM";
+import { useSettingsStore } from "../../context/SettingsContext";
+import calculate1RM from "../../utils/calculate1RM";
 
 interface ExerciseHistoryFormProps {
   exercise: Exercise;
