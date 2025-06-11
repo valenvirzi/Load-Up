@@ -15,6 +15,20 @@ const BarbellSelector: React.FC<BarbellSelectorProps> = ({
 }) => {
   const { t } = useTranslation();
   const { massUnit } = useSettingsStore();
+
+  if (barbells.length === 0) {
+    return (
+      <div className="flex flex-col gap-1">
+        <p className="text-center text-sm text-gray-400">
+          {t("noBarbellsAvailable")}
+        </p>
+        <p className="text-center text-sm text-gray-400">
+          {t("createBarbellToCalculateWeight")}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-1">
       <label className="opacity-65" htmlFor="barbellSelect">

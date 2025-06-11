@@ -1,10 +1,15 @@
 import { Plate } from "../types/types";
 
+// TODO: Show message when available weight isn't enough to reach desired weight
 const calculateLoadedBarbell = (
   inputWeight: number,
   barbellWeight: number,
   plates: Plate[],
 ) => {
+  // Determine the smallest plate weight for messaging logic
+  const smallestPlateWeight =
+    plates.length > 0 ? Math.min(...plates.map((p) => p.weight)) : Infinity; // If no plates, set to Infinity so any remaining weight triggers "weightNotReached"
+
   const eachSidePlates = plates.map((plate) => {
     if (plate.availableAmount % 2 === 0) {
       const newPlate = { ...plate, availableAmount: plate.availableAmount / 2 };
@@ -50,7 +55,21 @@ const calculateLoadedBarbell = (
     }
   }
 
-  return platesToRender;
+  let message = ""; // Initialize message as empty
+
+  // Determine the message based on the remaining weight to calculate
+  if (weightToCalculate > 0) {
+    // If there's a remaining weight and it's greater than or equal to the smallest plate,
+    // it means we couldn't reach the target weight within a reasonable margin.
+    if (weightToCalculate >= smallestPlateWeight) {
+      message = "weightNotReached";
+    }
+    // If 0 < weightToCalculate < smallestPlateWeight, the message remains empty,
+    // as the difference is considered negligible (cannot be covered by any single plate).
+  }
+
+  // Return the plates to render and the determined message
+  return { platesToRender, message };
 };
 
 export default calculateLoadedBarbell;

@@ -57,7 +57,7 @@
   "welcomeToLoadUp": "Welcome to Load Up!",
   "errorHasOccurred": "An unexpected error has occurred. Go back to the Home page.",
   "homePage": "Home page",
-  "saveProgressTo": "Save progress to",
+  "saveRecordTo": "Save record to",
   "allExercises": "All exercises",
   "featuresTitle": "Features",
   "featureInventory": "Save an inventory of your Barbells and Plates.",
@@ -78,5 +78,6 @@
   "reps": "Reps",
   "addNewRecord": "Add new record",
   "needMoreData": "Need more data to show chart",
-  "noExerciseRecords": "No exercise records available"
+  "noExerciseRecords": "No exercise records available",
+  "weightNotReached": "Weight couldn't be reached with the available plates"
 }

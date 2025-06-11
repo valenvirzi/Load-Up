@@ -9,6 +9,7 @@ interface CalculatorInputProps {
   error: string | null;
   desiredWeight: string;
   setDesiredWeight: React.Dispatch<React.SetStateAction<string>>;
+  setMessage: React.Dispatch<React.SetStateAction<string>>;
   setRenderedPlates: React.Dispatch<React.SetStateAction<Plate[]>>;
   setError: React.Dispatch<React.SetStateAction<string | null>>;
   barbellDisplayed: Barbell;
@@ -19,6 +20,7 @@ const CalculatorInput: React.FC<CalculatorInputProps> = ({
   error,
   desiredWeight,
   setDesiredWeight,
+  setMessage,
   setRenderedPlates,
   setError,
   barbellDisplayed,
@@ -45,17 +47,18 @@ const CalculatorInput: React.FC<CalculatorInputProps> = ({
 
   const handleSubmitWeight = () => {
     setError(null);
+    setMessage("");
     if (Number(desiredWeight) < barbellDisplayed.weight) {
       setError("weightGreaterThanBarbell");
       return;
     }
-    setRenderedPlates(
-      calculateLoadedBarbell(
-        Number(desiredWeight),
-        barbellDisplayed.weight,
-        plates,
-      ),
+    const { platesToRender, message } = calculateLoadedBarbell(
+      Number(desiredWeight),
+      barbellDisplayed.weight,
+      plates,
     );
+    setRenderedPlates(platesToRender);
+    setMessage(message);
   };
 
   return (

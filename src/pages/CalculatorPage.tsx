@@ -30,6 +30,7 @@ const CalculatorPage: React.FC = () => {
   const [renderedPlates, setRenderedPlates] = useState<Plate[]>([]);
   const [desiredWeight, setDesiredWeight] = useState<string>("");
   const [totalWeight, setTotalWeight] = useState<number>(0);
+  const [message, setMessage] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -70,6 +71,7 @@ const CalculatorPage: React.FC = () => {
       <CalculatorOutputText
         desiredWeight={desiredWeight}
         totalWeight={totalWeight}
+        message={message}
       />
       <CalculatorInput
         barbellDisplayed={barbellDisplayed}
@@ -77,6 +79,7 @@ const CalculatorPage: React.FC = () => {
         error={error}
         plates={plates}
         setDesiredWeight={setDesiredWeight}
+        setMessage={setMessage}
         setError={setError}
         setRenderedPlates={setRenderedPlates}
       />
@@ -89,7 +92,7 @@ const CalculatorPage: React.FC = () => {
             className="mt-4 cursor-pointer rounded-full bg-violet-800 p-3 px-4 text-white hover:bg-violet-800/85"
             type="button"
           >
-            {t("saveProgressTo")} {currentExercise.name}
+            {t("saveRecordTo")} {currentExercise.name}
           </button>
         </section>
       )}

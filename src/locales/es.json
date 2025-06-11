@@ -57,7 +57,7 @@
   "welcomeToLoadUp": "¡Bienvenido a Load Up!",
   "errorHasOccurred": "Ha ocurrido un error inesperado. Vuelve a la página de inicio.",
   "homePage": "Página de Inicio",
-  "saveProgressTo": "Guardar progreso en",
+  "saveRecordTo": "Guardar registro en",
   "allExercises": "Todos los ejercicios",
   "featuresTitle": "Funcionalidades",
   "featureInventory": "Guardar un inventario de tus Barras y Discos.",
@@ -78,5 +78,6 @@
   "reps": "Repeticiones",
   "addNewRecord": "Añadir nuevo registro",
   "needMoreData": "Se necesitan más datos para mostrar el gráfico",
-  "noExerciseRecords": "No hay registros para este ejercicio"
+  "noExerciseRecords": "No hay registros para este ejercicio",
+  "weightNotReached": "Los discos disponibles fueron insuficientes para llegar al peso deseado"
 }

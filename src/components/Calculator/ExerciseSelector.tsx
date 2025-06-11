@@ -13,6 +13,20 @@ const ExerciseSelector: React.FC<ExerciseSelectorProps> = ({
   setCurrentExercise,
 }) => {
   const { t } = useTranslation();
+
+  if (exercises.length === 0) {
+    return (
+      <div className="flex flex-col gap-1">
+        <p className="text-center text-sm text-gray-400">
+          {t("noExerciseAvailable")}
+        </p>
+        <p className="text-center text-sm text-gray-400">
+          {t("createExerciseToSaveProgress")}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-1">
       <label className="opacity-65" htmlFor="exerciseSelect">
