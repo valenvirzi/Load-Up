@@ -34,7 +34,7 @@ const CalculatorInput: React.FC<CalculatorInputProps> = ({
     const value = e.target.value;
 
     // Allow empty values, but avoid zeros to the left
-    if (value === "" || /^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
+    if (value === "" || /^(0|[1-9]\d*)(\.\d{0,2})?$/.test(value)) {
       setDesiredWeight(value);
     }
   };
@@ -74,7 +74,7 @@ const CalculatorInput: React.FC<CalculatorInputProps> = ({
           placeholder={t("enterDesiredWeight")}
           type="text"
           inputMode="decimal"
-          pattern="/^(0|[1-9]\d*)(\.\d*)?$/"
+          pattern="/^(0|[1-9]\d*)(\.\d{0,2})?$/"
           name="desiredWeight"
           id="desiredWeight"
           min={0}

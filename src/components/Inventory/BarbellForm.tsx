@@ -59,7 +59,7 @@ const BarbellForm: React.FC<BarbellFormProps> = ({
     const { name, value } = e.target;
 
     // Allow empty values, but avoid zeros to the left
-    if (value === "" || /^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
+    if (value === "" || /^(0|[1-9]\d*)(\.\d{0,2})?$/.test(value)) {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };

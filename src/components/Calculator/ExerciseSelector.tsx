@@ -50,7 +50,7 @@ const ExerciseSelector: React.FC<ExerciseSelectorProps> = ({
         {exercises.map((exercise) => {
           return (
             <option className="flex" value={exercise.name} key={exercise.name}>
-              <span>{exercise.name}</span>
+              {exercise.name}
             </option>
           );
         })}

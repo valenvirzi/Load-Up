@@ -13,6 +13,9 @@ const WelcomePage: React.FC = () => {
         <h2 className="text-xl">{t("featuresTitle")}:</h2>
         <ul className="flex list-disc flex-col gap-2 pr-1 pl-4 text-pretty">
           <li>
+            <p>{t("featureProgress")}</p>
+          </li>
+          <li>
             <p>{t("featureInventory")}</p>
           </li>
           <li>
@@ -22,12 +25,13 @@ const WelcomePage: React.FC = () => {
             <p>{t("featureSaveExercises")}</p>
           </li>
           <li>
-            <p>{t("featureProgress")}</p>
-          </li>
-          <li>
             <p>{t("featureSettings")}</p>
           </li>
         </ul>
+        <div className="flex flex-col gap-1">
+          <p>{t("howToUse")}</p>
+          <p>{t("currentItems")}</p>
+        </div>
       </section>
     </main>
   );

@@ -41,7 +41,7 @@ const PlateForm: React.FC<PlateFormProps> = ({
     const { name, value } = e.target;
 
     // Allow empty values, but avoid zeros to the left
-    if (value === "" || /^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
+    if (value === "" || /^(0|[1-9]\d*)(\.\d{0,2})?$/.test(value)) {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
@@ -54,15 +54,9 @@ const PlateForm: React.FC<PlateFormProps> = ({
       return;
     }
 
-    if (!value.includes(".")) {
+    if (/^(0|[1-9]\d*)$/.test(value)) {
       const parsedValue = parseInt(value, 10);
-      if (
-        !isNaN(parsedValue) &&
-        parsedValue > 0 &&
-        String(parsedValue) === value
-      ) {
-        setFormData((prev) => ({ ...prev, [name]: parsedValue }));
-      }
+      setFormData((prev) => ({ ...prev, [name]: parsedValue }));
     }
   };
 

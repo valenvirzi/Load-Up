@@ -312,10 +312,17 @@ export const useExercisesStore = create(
                       ...state.exercises[foundExerciseIndex].history,
                     ];
                     updatedHistory.push({ ...newExerciseRecord });
-                    const sortedHistory = sortExerciseHistory(updatedHistory);
+                    const descendingSortedHistory = sortExerciseHistory(
+                      updatedHistory,
+                      "desc",
+                    );
+
                     return {
                       ...exercise,
-                      history: sortedHistory,
+                      latestWorkoutDate: descendingSortedHistory[0].date,
+                      average1RM: descendingSortedHistory[0].average1RM,
+                      workoutVolume: descendingSortedHistory[0].workoutVolume,
+                      history: descendingSortedHistory,
                     };
                   }
                   return exercise;
@@ -363,9 +370,17 @@ export const useExercisesStore = create(
                   return !isSameDate;
                 });
 
+                const descendingSortedHistory = sortExerciseHistory(
+                  updatedHistory,
+                  "desc",
+                );
+
                 return {
                   ...exercise,
-                  history: updatedHistory,
+                  latestWorkoutDate: descendingSortedHistory[0].date,
+                  average1RM: descendingSortedHistory[0].average1RM,
+                  workoutVolume: descendingSortedHistory[0].workoutVolume,
+                  history: descendingSortedHistory,
                 };
               }
               return exercise;
@@ -429,9 +444,17 @@ export const useExercisesStore = create(
                     : entry;
                 });
 
+                const descendingSortedHistory = sortExerciseHistory(
+                  updatedHistory,
+                  "desc",
+                );
+
                 return {
                   ...exercise,
-                  history: updatedHistory,
+                  latestWorkoutDate: descendingSortedHistory[0].date,
+                  average1RM: descendingSortedHistory[0].average1RM,
+                  workoutVolume: descendingSortedHistory[0].workoutVolume,
+                  history: descendingSortedHistory,
                 };
               }
               return exercise;

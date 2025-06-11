@@ -79,12 +79,17 @@ const ExerciseChart: React.FC<ExerciseChartProps> = ({ history }) => {
     );
   }
 
+  {
+    /* 
+    TODO: Make the chart responsive on bigger screens:
+    https://gemini.google.com/app/b8f86e6a11fc5735?hl=es */
+  }
   return (
     <div className="flex h-80 w-full flex-col overflow-hidden rounded-lg bg-gray-50 p-2 shadow-lg dark:bg-zinc-900">
       <CustomChartLegend payload={legendPayload} />
 
       {/* div for horizontal scrolling, flex-grow to take up available vertical space. */}
-      <div className="flex-grow overflow-x-auto overflow-y-hidden border-t border-b border-gray-200 pt-2 dark:border-zinc-700">
+      <div className="flex-grow overflow-x-auto overflow-y-hidden border-t border-b border-gray-200 pt-2 lg:flex lg:flex-col lg:items-center dark:border-zinc-700">
         <LineChart
           width={chartContentWidth} // Dynamic width
           height={250} // Fixed height

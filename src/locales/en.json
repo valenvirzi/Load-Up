@@ -79,5 +79,8 @@
   "addNewRecord": "Add new record",
   "needMoreData": "Need more data to show chart",
   "noExerciseRecords": "No exercise records available",
-  "weightNotReached": "Weight couldn't be reached with the available plates"
+  "weightNotReached": "Weight couldn't be reached with the available plates",
+  "saveRecord?": "Save record?",
+  "howToUse": "To start using the app just delete or modify the existing items and create your own.",
+  "currentItems": "Current ones are for demonstration purposes only."
 }

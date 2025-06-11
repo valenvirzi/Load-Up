@@ -64,7 +64,7 @@
   "featureLoadCalc": "Calcular la forma más eficiente de cargar tu barra a la hora de ejercitar.",
   "featureSaveExercises": "Guardar los ejercicios de tu rutina.",
   "featureProgress": "Obtener la información de tu progreso, de forma gráfica, en cada ejercicio a lo largo del tiempo.",
-  "featureSettings": "Acceso a configuraciones en cuanto a: Unidad de peso, Idioma y Tema de la App.",
+  "featureSettings": "Acceso a configuraciones como: Unidad de peso, Idioma y Tema de la App.",
   "sortElements": "Orden",
   "oldFirst": "Antiguo primero",
   "recentFirst": "Reciente primero",
@@ -79,5 +79,8 @@
   "addNewRecord": "Añadir nuevo registro",
   "needMoreData": "Se necesitan más datos para mostrar el gráfico",
   "noExerciseRecords": "No hay registros para este ejercicio",
-  "weightNotReached": "Los discos disponibles fueron insuficientes para llegar al peso deseado"
+  "weightNotReached": "Los discos disponibles fueron insuficientes para llegar al peso deseado",
+  "saveRecord?": "¿Guardar registro?",
+  "howToUse": "Para empezar a usar la app solo elimina o modifica los elementos actuales y crea los tuyos propios.",
+  "currentItems": "Los elementos actuales son solo para demostración."
 }

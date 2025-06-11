@@ -50,8 +50,7 @@ const BarbellSelector: React.FC<BarbellSelectorProps> = ({
         {barbells.map((barbell) => {
           return (
             <option className="flex" value={barbell.id} key={barbell.id}>
-              <span>{barbell.type}</span>
-              <span> {`(${barbell.weight}${massUnit})`}</span>
+              {barbell.type} {`(${barbell.weight}${massUnit})`}
             </option>
           );
         })}

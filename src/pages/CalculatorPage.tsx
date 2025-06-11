@@ -9,6 +9,7 @@ import BarbellSelector from "../components/Calculator/BarbellSelector";
 import LoadedBarbell from "../components/Calculator/LoadedBarbell";
 import CalculatorOutputText from "../components/Calculator/CalculatorOutputText";
 import CalculatorInput from "../components/Calculator/CalculatorInput";
+import SaveRecordBtn from "../components/Calculator/SaveRecordBtn";
 
 const CalculatorPage: React.FC = () => {
   // TODO: Administrar guardado de información en el Historial de cada ejercicio.
@@ -86,15 +87,11 @@ const CalculatorPage: React.FC = () => {
       {exercises.length === 0 ? (
         <></>
       ) : (
-        <section className="flex justify-center p-2">
-          {/* TODO: Save Workout Record feature */}
-          <button
-            className="mt-4 cursor-pointer rounded-full bg-violet-800 p-3 px-4 text-white hover:bg-violet-800/85"
-            type="button"
-          >
-            {t("saveRecordTo")} {currentExercise.name}
-          </button>
-        </section>
+        <SaveRecordBtn
+          currentExercise={currentExercise}
+          setMessage={setMessage}
+          totalWeight={totalWeight}
+        />
       )}
     </main>
   );
