@@ -67,7 +67,8 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <ul className="flex flex-col items-stretch">
+    <ul className="mt-4 flex flex-col items-stretch">
+      <hr className="border-0 border-b border-b-gray-400" />
       {Object.entries(settings).map(([id, { label, options }]) => (
         <SettingsItem
           key={id}

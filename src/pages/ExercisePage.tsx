@@ -60,61 +60,65 @@ const ExercisePage: React.FC = () => {
   return (
     <div className="flex flex-col gap-2 px-2">
       <div>
-        <h3 className="text-xl">{exercise.name}</h3>
+        <h3 className="text-xl xl:text-2xl">{exercise.name}</h3>
       </div>
-      <ExerciseChart history={sortedHistory} />
-      <button
-        className="mt-2 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white hover:bg-violet-800/85"
-        onClick={() => {
-          setCreate(true);
-          const newDate = new Date();
-          setSelectedExerciseRecord({
-            date: {
-              year: newDate.getFullYear(),
-              month: newDate.getMonth() + 1,
-              day: newDate.getDate(),
-              hour: newDate.getHours(),
-              minute: newDate.getMinutes(),
-            },
-            average1RM: 0,
-            workoutVolume: 0,
-          });
-        }}
-        type="button"
-      >
-        <span>{t("addNewRecord")}</span>
-      </button>
-      <hr className="border-0 border-b border-b-gray-400" />
-      <div className="flex items-center justify-between">
-        <h4>{t("sortElements")}:</h4>
-        <select
-          onChange={handleSelectChange}
-          name="historyOrder"
-          id="historyOrder"
-          className="cursor-pointer rounded border-none bg-gray-100 p-2 text-sm dark:bg-zinc-700"
-        >
-          <option value="desc">{t("recentFirst")}</option>
-          <option value="asc">{t("oldFirst")}</option>
-        </select>
-      </div>
+      <div className="flex flex-col gap-2 xl:flex-row xl:gap-4">
+        <ExerciseChart history={sortedHistory} />
+        <section className="flex flex-col gap-2 xl:w-1/2">
+          <button
+            className="mt-2 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white hover:bg-violet-800/85"
+            onClick={() => {
+              setCreate(true);
+              const newDate = new Date();
+              setSelectedExerciseRecord({
+                date: {
+                  year: newDate.getFullYear(),
+                  month: newDate.getMonth() + 1,
+                  day: newDate.getDate(),
+                  hour: newDate.getHours(),
+                  minute: newDate.getMinutes(),
+                },
+                average1RM: 0,
+                workoutVolume: 0,
+              });
+            }}
+            type="button"
+          >
+            <span>{t("addNewRecord")}</span>
+          </button>
+          <hr className="border-0 border-b border-b-gray-400" />
+          <div className="flex items-center justify-between">
+            <h4>{t("sortElements")}:</h4>
+            <select
+              onChange={handleSelectChange}
+              name="historyOrder"
+              id="historyOrder"
+              className="cursor-pointer rounded border-none bg-gray-100 p-2 text-sm dark:bg-zinc-700"
+            >
+              <option value="desc">{t("recentFirst")}</option>
+              <option value="asc">{t("oldFirst")}</option>
+            </select>
+          </div>
 
-      {sortedHistory.length === 0 ? (
-        <p className="mt-2 text-center text-sm text-gray-400">
-          {t("noExerciseRecords")}
-        </p>
-      ) : (
-        <ul className="flex flex-col items-stretch border-0 border-t border-t-gray-400">
-          {sortedHistory.map((entry, index) => {
-            return (
-              <ExerciseRecordItem
-                entry={entry}
-                setSelectedExerciseRecord={setSelectedExerciseRecord}
-                key={index}
-              />
-            );
-          })}
-        </ul>
-      )}
+          {sortedHistory.length === 0 ? (
+            <p className="mt-2 text-center text-sm text-gray-400">
+              {t("noExerciseRecords")}
+            </p>
+          ) : (
+            <ul className="flex flex-col items-stretch border-0 border-t border-t-gray-400 lg:max-h-[450px] lg:overflow-y-scroll">
+              {sortedHistory.map((entry, index) => {
+                return (
+                  <ExerciseRecordItem
+                    entry={entry}
+                    setSelectedExerciseRecord={setSelectedExerciseRecord}
+                    key={index}
+                  />
+                );
+              })}
+            </ul>
+          )}
+        </section>
+      </div>
 
       {selectedExerciseRecord === null ? (
         <></>

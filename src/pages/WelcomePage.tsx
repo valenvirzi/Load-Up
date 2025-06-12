@@ -7,7 +7,9 @@ const WelcomePage: React.FC = () => {
     <main className="flex flex-col items-stretch gap-2 p-2 px-4">
       <div className="p-2">
         <img src={gym} className="w-24" alt="Icon" />
-        <h2 className="text-3xl text-pretty">{t("welcomeToLoadUp")}</h2>
+        <h2 className="text-3xl text-pretty xl:text-4xl">
+          {t("welcomeToLoadUp")}
+        </h2>
       </div>
       <section className="flex flex-col gap-3 p-2">
         <h2 className="text-xl">{t("featuresTitle")}:</h2>

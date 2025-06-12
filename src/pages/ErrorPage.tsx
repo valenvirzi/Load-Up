@@ -11,7 +11,7 @@ const ErrorPage: React.FC = () => {
       className={`relative flex min-h-lvh max-w-screen flex-col px-4 pb-24 dark:bg-stone-900 dark:text-white ${theme}`}
     >
       <div className="p-4 px-2">
-        <h1 className="text-3xl">Error</h1>
+        <h1 className="text-3xl xl:text-4xl">Error</h1>
       </div>
       <div className="p-4 px-2">
         <p>{t("errorHasOccurred")}</p>

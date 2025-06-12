@@ -27,9 +27,9 @@ const BarbellInventoryItem: React.FC<BarbellInventoryItemProps> = ({
   const { t } = useTranslation();
 
   return (
-    <li className="flex flex-col items-stretch">
+    <li className="mx-auto flex max-w-sm flex-col items-stretch md:h-full 2xl:mx-0 2xl:w-full">
       <button
-        className="relative flex cursor-pointer flex-col gap-2"
+        className="relative flex cursor-pointer flex-col gap-2 md:h-full"
         type="button"
         onClick={() => setSelectedBarbell(barbell)}
       >
@@ -39,7 +39,7 @@ const BarbellInventoryItem: React.FC<BarbellInventoryItemProps> = ({
           <img className="" src={edit} alt={t("edit")} />
         </div>
         <img src={BARBELLS_IMG[barbell.type]} alt={`${barbell.type} barbell`} />
-        <div className="flex w-full justify-between text-lg">
+        <div className="absolute bottom-0 flex w-full justify-between text-lg">
           <h3 className="">{barbell.type}</h3>
           <span>
             {barbell.weight}
@@ -47,7 +47,7 @@ const BarbellInventoryItem: React.FC<BarbellInventoryItemProps> = ({
           </span>
         </div>
       </button>
-      <hr className="mx-auto mt-2 w-2/3 border-t-0 border-b border-gray-600" />
+      <hr className="mx-auto mt-2 w-full border-t-0 border-b border-gray-400" />
     </li>
   );
 };

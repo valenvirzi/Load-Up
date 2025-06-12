@@ -137,7 +137,7 @@ const BarbellForm: React.FC<BarbellFormProps> = ({
       className="absolute inset-0 flex flex-col items-center bg-black/30"
     >
       <form
-        className="absolute top-1/12 flex w-10/12 flex-col gap-4 rounded bg-white p-3 text-black dark:bg-stone-900 dark:text-white"
+        className="absolute top-1/12 flex w-10/12 max-w-md flex-col gap-4 rounded bg-white p-3 text-black dark:bg-stone-900 dark:text-white"
         name="barbellForm"
         id="barbellForm"
         onSubmit={handleSubmit}
@@ -171,10 +171,11 @@ const BarbellForm: React.FC<BarbellFormProps> = ({
                 className="w-1/2 rounded bg-gray-100 p-2 dark:bg-zinc-700"
                 type="number"
                 name="weight"
+                id="weight"
+                placeholder="0"
                 min={0}
                 step={0.05}
-                id="weight"
-                value={formData.weight}
+                value={formData.weight === 0 ? "" : formData.weight}
                 onChange={handleInputChange}
                 onBlur={handleBlur}
               />

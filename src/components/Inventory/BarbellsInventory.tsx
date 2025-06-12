@@ -33,7 +33,7 @@ const BarbellsInventory: React.FC = () => {
           {t("noBarbellsInInventory")}
         </p>
       ) : (
-        <ul>
+        <ul className="md:grid md:grid-cols-2 md:gap-2 lg:grid-cols-3 2xl:place-items-center">
           {barbells.map((barbell) => (
             <BarbellInventoryItem
               key={barbell.id}

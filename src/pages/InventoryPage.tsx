@@ -17,7 +17,7 @@ const InventoryPage: React.FC = () => {
   return (
     <main className="flex flex-col items-stretch p-2 px-4">
       <div className="p-2">
-        <h2 className="text-3xl">{t("inventory")}</h2>
+        <h2 className="text-3xl xl:text-4xl">{t("inventory")}</h2>
       </div>
       <InventoryComponentSelector
         inventoryDisplayed={inventoryDisplayed}

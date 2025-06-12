@@ -9,7 +9,6 @@ import BarbellSelector from "../components/Calculator/BarbellSelector";
 import LoadedBarbell from "../components/Calculator/LoadedBarbell";
 import CalculatorOutputText from "../components/Calculator/CalculatorOutputText";
 import CalculatorInput from "../components/Calculator/CalculatorInput";
-import SaveRecordBtn from "../components/Calculator/SaveRecordBtn";
 
 const CalculatorPage: React.FC = () => {
   // TODO: Administrar guardado de información en el Historial de cada ejercicio.
@@ -40,9 +39,9 @@ const CalculatorPage: React.FC = () => {
     );
   }, [renderedPlates, barbellDisplayed]);
   return (
-    <main className="flex flex-col gap-4 p-2 px-4">
+    <main className="flex flex-col gap-4 p-2 px-4 lg:px-10 lg:py-4">
       <div className="p-2">
-        <h2 className="text-3xl">{t("calculator")}</h2>
+        <h2 className="text-3xl xl:text-4xl">{t("calculator")}</h2>
       </div>
       <section className="flex flex-col gap-2 px-2">
         {exercises.length === 0 ? (
@@ -52,6 +51,8 @@ const CalculatorPage: React.FC = () => {
             currentExercise={currentExercise}
             exercises={exercises}
             setCurrentExercise={setCurrentExercise}
+            setMessage={setMessage}
+            totalWeight={totalWeight}
           />
         )}
         {barbells.length === 0 ? (
@@ -84,15 +85,6 @@ const CalculatorPage: React.FC = () => {
         setError={setError}
         setRenderedPlates={setRenderedPlates}
       />
-      {exercises.length === 0 ? (
-        <></>
-      ) : (
-        <SaveRecordBtn
-          currentExercise={currentExercise}
-          setMessage={setMessage}
-          totalWeight={totalWeight}
-        />
-      )}
     </main>
   );
 };

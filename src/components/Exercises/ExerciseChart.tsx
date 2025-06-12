@@ -11,6 +11,7 @@ import { ExerciseRecord } from "../../context/ExercisesContext";
 import sortExerciseHistory from "../../utils/sortExerciseHistory";
 import workoutDateToText from "../../utils/workoutDateToText";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 
 interface ExerciseChartProps {
   history: ExerciseRecord[];
@@ -49,18 +50,51 @@ const ExerciseChart: React.FC<ExerciseChartProps> = ({ history }) => {
   const { t } = useTranslation();
   const sortedHistory = sortExerciseHistory(history, "asc");
 
+  // State to manage the chart height dynamically based on screen size
+  const [chartHeight, setChartHeight] = useState(250); // Initial height for smaller screens
+
+  useEffect(() => {
+    // Function to update chart height based on window width
+    const updateChartDimensions = () => {
+      // For larger screens (e.g., 'lg' breakpoint, 768px and up), set a larger height
+      if (window.innerWidth >= 1024) {
+        setChartHeight(500); // Larger height for desktop
+      } else if (window.innerWidth >= 768) {
+        setChartHeight(350); // Larger height for desktop
+      } else {
+        setChartHeight(250); // Default height for smaller screens
+      }
+    };
+
+    // Set initial dimensions when the component mounts
+    updateChartDimensions();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", updateChartDimensions);
+
+    // Clean up the event listener when the component unmounts
+    return () => window.removeEventListener("resize", updateChartDimensions);
+  }, []); // Empty dependency array ensures this effect runs only once on mount and cleans up on unmount
+
+  // Map exercise history data to the format required by Recharts
   const data: ChartDataRecord[] = sortedHistory.map(
     (record: ExerciseRecord) => {
       return {
-        date: workoutDateToText(record.date, false), // false to not include hours and minutes
+        date: workoutDateToText(record.date, false), // `false` to not include hours and minutes
         average1RM: record.average1RM,
         workoutVolume: record.workoutVolume,
       };
     },
   );
 
-  // Dynamic width depending on the amount of elements on the array, with a minimum of 300px
-  const chartContentWidth = Math.max(300, data.length * 80);
+  // Dynamic width calculation: Ensures the chart is wide enough for all data points
+  // with a minimum width, and grows on larger screens.
+  const chartContentWidth = Math.max(
+    300, // Minimum width for the chart
+    data.length * 80, // Each data point takes approximately 80px
+    // On larger screens, ensure a more generous minimum width or scaling factor
+    window.innerWidth >= 768 ? data.length * 100 : 0, // Add more spacing for larger screens if desired
+  );
 
   // Payload for the CustomChartLegend.
   // 'value' should be = to 'dataKey' of Line components,
@@ -85,14 +119,14 @@ const ExerciseChart: React.FC<ExerciseChartProps> = ({ history }) => {
     https://gemini.google.com/app/b8f86e6a11fc5735?hl=es */
   }
   return (
-    <div className="flex h-80 w-full flex-col overflow-hidden rounded-lg bg-gray-50 p-2 shadow-lg dark:bg-zinc-900">
+    <div className="flex h-full w-full flex-col overflow-hidden rounded-lg bg-gray-50 p-2 shadow-lg xl:self-center dark:bg-zinc-900">
       <CustomChartLegend payload={legendPayload} />
 
       {/* div for horizontal scrolling, flex-grow to take up available vertical space. */}
       <div className="flex-grow overflow-x-auto overflow-y-hidden border-t border-b border-gray-200 pt-2 lg:flex lg:flex-col lg:items-center dark:border-zinc-700">
         <LineChart
           width={chartContentWidth} // Dynamic width
-          height={250} // Fixed height
+          height={chartHeight} // Fixed height
           data={data}
           margin={{
             top: 5,

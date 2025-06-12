@@ -13,7 +13,7 @@ const PlatesInventory: React.FC = () => {
   return (
     <section className="flex flex-col gap-2 px-1">
       <button
-        className="mt-4 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white hover:bg-violet-800/85"
+        className="mt-4 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white hover:bg-violet-800/85 lg:text-lg"
         onClick={() => {
           setCreate(true);
           setSelectedPlate({
@@ -34,7 +34,7 @@ const PlatesInventory: React.FC = () => {
           {t("noPlatesInInventory")}
         </p>
       ) : (
-        <ul className="grid grid-cols-3 gap-2 p-2">
+        <ul className="grid grid-cols-3 gap-2 p-2 lg:gap-4">
           {plates.map((plate) => (
             <PlateInventoryItem
               key={plate.id}

@@ -17,9 +17,9 @@ const ExercisesPage: React.FC = () => {
   const to =
     location.pathname === "/exercises/all" ? "/exercises" : "/exercises/all";
   return (
-    <main className="flex flex-col items-stretch p-2 px-4">
+    <main className="flex flex-col items-stretch p-2 px-4 lg:px-10 lg:py-4">
       <div className="flex items-center justify-between p-2">
-        <h2 className="text-3xl">{t("exercises")}</h2>
+        <h2 className="text-3xl xl:text-4xl">{t("exercises")}</h2>
         {exercises.length >= 3 ? (
           <NavLink
             className={({ isActive }) => {
@@ -57,7 +57,7 @@ const ExercisesPage: React.FC = () => {
           >
             <span>{t("addNewExercise")}</span>
           </button>
-          <ul className="border-0 border-t border-t-gray-500">
+          <ul className="border-0 border-t border-t-gray-500 xl:grid xl:grid-cols-2 xl:gap-x-10 2xl:grid-cols-3">
             {exercises.map((exercise) => {
               return (
                 <ExerciseItem

@@ -209,7 +209,7 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
       className="absolute inset-0 flex flex-col items-center bg-black/30"
     >
       <form
-        className="absolute top-1/12 flex w-10/12 flex-col gap-4 rounded bg-white p-3 text-black dark:bg-stone-900 dark:text-white"
+        className="absolute top-1/12 flex w-10/12 max-w-md flex-col gap-4 rounded bg-white p-3 text-black dark:bg-stone-900 dark:text-white"
         name="exerciseRecordForm"
         id="exerciseRecordForm"
         onSubmit={handleSubmit}
