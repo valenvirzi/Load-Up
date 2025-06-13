@@ -1,14 +1,13 @@
 import { Plate } from "../types/types";
 
-// TODO: Show message when available weight isn't enough to reach desired weight
 const calculateLoadedBarbell = (
   inputWeight: number,
   barbellWeight: number,
   plates: Plate[],
 ) => {
-  // Determine the smallest plate weight for messaging logic
+  // Get the smallest plate weight for knowing when to show the message
   const smallestPlateWeight =
-    plates.length > 0 ? Math.min(...plates.map((p) => p.weight)) : Infinity; // If no plates, set to Infinity so any remaining weight triggers "weightNotReached"
+    plates.length > 0 ? Math.min(...plates.map((p) => p.weight)) : Infinity; // If no plates, set to Infinity so any remaining weight triggers "weightNotReached" in case no plates are passed
 
   const eachSidePlates = plates.map((plate) => {
     if (plate.availableAmount % 2 === 0) {
@@ -40,7 +39,7 @@ const calculateLoadedBarbell = (
         platesToRender.push(uniquePlate);
         weightToCalculate -= plate.weight;
         eachSidePlates[i].availableAmount--;
-        startIndex = i; // Start the next iteration from the current plate
+        startIndex = i; // Start the next iteration from the current plate because we know that the previous ones were used already
         foundPlateInIteration = true;
         break;
       }
@@ -55,20 +54,14 @@ const calculateLoadedBarbell = (
     }
   }
 
-  let message = ""; // Initialize message as empty
+  let message = ""; // Starts empty
 
-  // Determine the message based on the remaining weight to calculate
+  // If the requested weight is greater than the calculated weight by an order of magnitude greater than the weight of the smallest plate, then we know that the weight couldn't be reached, so we set the output msg to reflect that, otherwise, msg="".
   if (weightToCalculate > 0) {
-    // If there's a remaining weight and it's greater than or equal to the smallest plate,
-    // it means we couldn't reach the target weight within a reasonable margin.
     if (weightToCalculate >= smallestPlateWeight) {
       message = "weightNotReached";
     }
-    // If 0 < weightToCalculate < smallestPlateWeight, the message remains empty,
-    // as the difference is considered negligible (cannot be covered by any single plate).
   }
-
-  // Return the plates to render and the determined message
   return { platesToRender, message };
 };
 

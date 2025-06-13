@@ -6,6 +6,8 @@ import { useState } from "react";
 import ExerciseHistoryForm from "../components/Exercises/ExerciseHistoryForm";
 import ExerciseChart from "../components/Exercises/ExerciseChart";
 import ExerciseRecordItem from "../components/Exercises/ExerciseRecordItem";
+import CreateRecordBtn from "../components/Exercises/CreateRecordBtn";
+import RecordSortSelect from "../components/Exercises/RecordSortSelect";
 
 const ExercisePage: React.FC = () => {
   // TODO: Componetizar funcionalidades y elementos.
@@ -34,7 +36,7 @@ const ExercisePage: React.FC = () => {
         <div>
           <h3 className="text-xl">{t("allExercises")}</h3>
         </div>
-        {/* TODO: Insertar 2 gráficos de radar:
+        {/* TODO: Insertar 2 gráficos de radar con un slider para mostrar cada uno:
             * Gráfico 1:
                 - Angle Axis: exercise.name
                 - Radar datakey: 1RM más reciente de ese ejercicio.
@@ -65,40 +67,12 @@ const ExercisePage: React.FC = () => {
       <div className="flex flex-col gap-2 xl:flex-row xl:gap-4">
         <ExerciseChart history={sortedHistory} />
         <section className="flex flex-col gap-2 xl:w-1/2">
-          <button
-            className="mt-2 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white hover:bg-violet-800/85"
-            onClick={() => {
-              setCreate(true);
-              const newDate = new Date();
-              setSelectedExerciseRecord({
-                date: {
-                  year: newDate.getFullYear(),
-                  month: newDate.getMonth() + 1,
-                  day: newDate.getDate(),
-                  hour: newDate.getHours(),
-                  minute: newDate.getMinutes(),
-                },
-                average1RM: 0,
-                workoutVolume: 0,
-              });
-            }}
-            type="button"
-          >
-            <span>{t("addNewRecord")}</span>
-          </button>
+          <CreateRecordBtn
+            setCreate={setCreate}
+            setSelectedExerciseRecord={setSelectedExerciseRecord}
+          />
           <hr className="border-0 border-b border-b-gray-400" />
-          <div className="flex items-center justify-between">
-            <h4>{t("sortElements")}:</h4>
-            <select
-              onChange={handleSelectChange}
-              name="historyOrder"
-              id="historyOrder"
-              className="cursor-pointer rounded border-none bg-gray-100 p-2 text-sm dark:bg-zinc-700"
-            >
-              <option value="desc">{t("recentFirst")}</option>
-              <option value="asc">{t("oldFirst")}</option>
-            </select>
-          </div>
+          <RecordSortSelect handleSelectChange={handleSelectChange} />
 
           {sortedHistory.length === 0 ? (
             <p className="mt-2 text-center text-sm text-gray-400">

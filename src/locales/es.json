@@ -82,5 +82,6 @@
   "weightNotReached": "Los discos disponibles fueron insuficientes para llegar al peso deseado",
   "saveRecord?": "¿Guardar registro?",
   "howToUse": "Para empezar a usar la app solo elimina o modifica los elementos actuales y crea los tuyos propios.",
-  "currentItems": "Los elementos actuales son solo para demostración."
+  "currentItems": "Los elementos actuales son solo para demostración.",
+  "alreadyBarbell": "Ya existe una barra con esas características."
 }

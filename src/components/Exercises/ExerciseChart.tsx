@@ -113,11 +113,6 @@ const ExerciseChart: React.FC<ExerciseChartProps> = ({ history }) => {
     );
   }
 
-  {
-    /* 
-    TODO: Make the chart responsive on bigger screens:
-    https://gemini.google.com/app/b8f86e6a11fc5735?hl=es */
-  }
   return (
     <div className="flex h-full w-full flex-col overflow-hidden rounded-lg bg-gray-50 p-2 shadow-lg xl:self-center dark:bg-zinc-900">
       <CustomChartLegend payload={legendPayload} />

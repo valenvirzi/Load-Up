@@ -51,6 +51,18 @@ export const useInventoryStore = create(
           color: "bg-zinc-700",
           type: "Standard",
         },
+        {
+          id: "barbell,roman,12",
+          weight: 12,
+          color: "bg-zinc-700",
+          type: "Roman",
+        },
+        {
+          id: "barbell,olympic,20",
+          weight: 20,
+          color: "bg-zinc-700",
+          type: "Olympic",
+        },
       ],
 
       createPlate: (newPlate: Omit<Plate, "id">) =>
@@ -71,12 +83,11 @@ export const useInventoryStore = create(
           plates: state.plates.filter((p) => p.id !== id),
         })),
 
-      // TODO: Throw errors on each edge case. Right now it only does so when the updated plate has the same weight as an existing one.
       updatePlate: (previousId: string, updatedPlate: Plate) =>
         set((state) => {
           const plateIndex = state.plates.findIndex((p) => p.id === previousId);
-          if (plateIndex === -1) return state;
           // The plate you are trying to update doesn't exist.
+          if (plateIndex === -1) return state;
 
           const oldPlate = state.plates[plateIndex];
           const newPlate = { ...oldPlate, ...updatedPlate };
@@ -108,12 +119,11 @@ export const useInventoryStore = create(
           return { plates: updatedPlates.sort((a, b) => b.weight - a.weight) };
         }),
 
-      // TODO: Throw the corresponding errors for each case just like the Plates functions do
       createBarbell: (newBarbell: Omit<Barbell, "id">) =>
         set((state) => {
           const id = generateId(newBarbell.type, newBarbell.weight);
           if (state.barbells.some((b) => b.id === id)) {
-            return state;
+            throw new Error("alreadyBarbell");
           } else {
             return {
               barbells: [...state.barbells, { ...newBarbell, id }].sort(
@@ -148,8 +158,7 @@ export const useInventoryStore = create(
             newId !== previousId &&
             state.barbells.some((b) => b.id === newId)
           ) {
-            return state;
-            // A barbell with this characteristics already exists.
+            throw new Error("alreadyBarbell");
           }
 
           const updatedBarbells = [...state.barbells];

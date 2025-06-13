@@ -5,6 +5,7 @@ import { useState } from "react";
 import ExerciseForm from "../components/Exercises/ExerciseForm";
 import ExerciseItem from "../components/Exercises/ExerciseItem";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import CreateExerciseBtn from "../components/Exercises/CreateExerciseBtn";
 
 const ExercisesPage: React.FC = () => {
   const location = useLocation();
@@ -38,25 +39,10 @@ const ExercisesPage: React.FC = () => {
       </div>
       {location.pathname === "/exercises" ? (
         <section className="flex flex-col gap-2 px-2">
-          <button
-            onClick={() => {
-              setCreate(true);
-              setSelectedExercise({
-                name: "",
-                sets: 0,
-                repsPerSet: 0,
-                currentWeight: 0,
-                average1RM: null,
-                latestWorkoutDate: null,
-                workoutVolume: null,
-                history: [],
-              });
-            }}
-            className="mt-4 mb-2 cursor-pointer rounded-full bg-violet-800 p-3 text-white"
-            type="button"
-          >
-            <span>{t("addNewExercise")}</span>
-          </button>
+          <CreateExerciseBtn
+            setCreate={setCreate}
+            setSelectedExercise={setSelectedExercise}
+          />
           <ul className="border-0 border-t border-t-gray-500 xl:grid xl:grid-cols-2 xl:gap-x-10 2xl:grid-cols-3">
             {exercises.map((exercise) => {
               return (

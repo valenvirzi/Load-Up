@@ -59,7 +59,6 @@ const SaveRecordBtn: React.FC<SaveRecordBtnProps> = ({
 
   return (
     <section className="flex justify-center py-2 lg:justify-normal lg:py-0">
-      {/* TODO: Save Workout Record feature */}
       <button
         onClick={saveRecord}
         className="w-full cursor-pointer rounded-full bg-violet-800 p-3 px-4 text-white hover:bg-violet-800/85 lg:min-w-76 lg:py-2"

@@ -46,10 +46,7 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
   const [repsVolume, setRepsVolume] = useState<string>("0");
   const [weightVolume, setWeightVolume] = useState<string>("0");
 
-  // TODO: Complete the form input fields and the handlers for each one.
-  // TODO: Add the possibility for the user to enter a Weight and Reps to calculate the 1RM if they don't know it, same with the Workout Volume, but also add the Sets
-
-  // Effect to calculate 1RM and update formData.average1RM
+  // useEffect to calculate 1RM and update formData.average1RM
   useEffect(() => {
     if (isCalculate1RM) {
       const calculated1RM = calculate1RM(Number(weight1RM), Number(reps1RM));
@@ -64,7 +61,7 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
     }
   }, [isCalculate1RM, weight1RM, reps1RM]);
 
-  // Effect to calculate Workout Volume and update formData.workoutVolume
+  // useEffect to calculate Workout Volume and update formData.workoutVolume
   useEffect(() => {
     if (calculateWorkoutVolume) {
       const calculatedVolume =
@@ -84,7 +81,7 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
   const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    // Allow empty values, but avoid zeros to the left
+    // Allow empty values, but avoid zeros to the left, and no more than 2 decimals
     if (value === "" || /^(0|[1-9]\d*)(\.\d{0,2})?$/.test(value)) {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -118,7 +115,7 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
       }
     } else {
       // For decimal fields (weight)
-      if (/^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
+      if (/^(0|[1-9]\d*)(\.\d{0,2})?$/.test(value)) {
         setState(value);
       }
     }
@@ -177,7 +174,6 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
       setError("dateLowerThanCurrentDate");
       return;
     }
-    //******************
 
     if (create) {
       try {
@@ -234,7 +230,6 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
         <div className="flex max-h-96 flex-col gap-4 overflow-y-auto p-0.5">
           {error && <p className="text-red-500">{t(error)}</p>}
           <div className="flex flex-col gap-4">
-            {/* // TODO: Edit and create a new ExerciseRecord feature */}
             {/* Date */}
             <div className="flex flex-col gap-1">
               <label className="text-lg" htmlFor="workoutDate">
@@ -252,7 +247,6 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <h4 className="text-lg">1RM</h4>
-
                 <label
                   className="flex cursor-pointer items-center gap-1 text-sm opacity-70"
                   htmlFor="calculate1RM"
@@ -349,7 +343,6 @@ const ExerciseHistoryForm: React.FC<ExerciseHistoryFormProps> = ({
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <h4 className="text-lg">{t("workoutVolume")}</h4>
-
                 <label
                   className="flex cursor-pointer items-center gap-1 text-sm opacity-70"
                   htmlFor="calculateWorkoutVolume"

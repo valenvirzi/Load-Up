@@ -11,8 +11,6 @@ import CalculatorOutputText from "../components/Calculator/CalculatorOutputText"
 import CalculatorInput from "../components/Calculator/CalculatorInput";
 
 const CalculatorPage: React.FC = () => {
-  // TODO: Administrar guardado de información en el Historial de cada ejercicio.
-
   const { t } = useTranslation();
   const { plates, barbells } = useInventoryStore();
   const { exercises } = useExercisesStore();
