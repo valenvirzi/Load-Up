@@ -22,7 +22,7 @@ const AllExercisesSection: React.FC = () => {
       <div className="flex flex-col items-center">
         {/* Buttons for the slider */}
         <div
-          className={`mb-4 flex w-full max-w-md justify-around rounded-md bg-gray-700 p-1 xl:hidden`}
+          className={`mb-4 flex w-full max-w-md justify-around rounded-md bg-gray-700 p-1`}
         >
           <button
             onClick={() => swiperInstance?.slideTo(0)}
@@ -54,23 +54,6 @@ const AllExercisesSection: React.FC = () => {
           className="w-full"
           onSwiper={setSwiperInstance}
           onSlideChange={(swiper) => setCurrentSlideIndex(swiper.activeIndex)}
-          breakpoints={{
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-              centeredSlides: false,
-              pagination: false,
-              navigation: false,
-            },
-            1024: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            1280: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-          }}
         >
           <SwiperSlide>
             <ExercisesRadarChart chart="1RM" />
