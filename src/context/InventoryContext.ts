@@ -25,12 +25,7 @@ export const useInventoryStore = create(
           color: "bg-emerald-800",
           availableAmount: 8,
         },
-        {
-          id: "plate,5",
-          weight: 5,
-          color: "bg-blue-800",
-          availableAmount: 8,
-        },
+        { id: "plate,5", weight: 5, color: "bg-blue-800", availableAmount: 8 },
         {
           id: "plate,2.5",
           weight: 2.5,
@@ -46,22 +41,22 @@ export const useInventoryStore = create(
       ],
       barbells: [
         {
-          id: "barbell,standard,20",
-          weight: 20,
-          color: "bg-zinc-700",
-          type: "Standard",
-        },
-        {
-          id: "barbell,roman,12",
-          weight: 12,
-          color: "bg-zinc-700",
-          type: "Roman",
-        },
-        {
-          id: "barbell,olympic,20",
-          weight: 20,
-          color: "bg-zinc-700",
+          id: "barbell,olympic,30",
+          weight: 30,
+          color: "bg-emerald-800",
           type: "Olympic",
+        },
+        {
+          id: "barbell,w curl,20",
+          weight: 20,
+          color: "bg-zinc-500",
+          type: "W Curl",
+        },
+        {
+          id: "barbell,roman,15",
+          weight: 15,
+          color: "bg-blue-800",
+          type: "Roman",
         },
       ],
 
