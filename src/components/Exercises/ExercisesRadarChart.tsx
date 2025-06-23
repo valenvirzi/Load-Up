@@ -5,22 +5,22 @@ import {
   Radar,
   RadarChart,
   ResponsiveContainer,
-  Text, // Import Text for custom ticks
+  Text,
 } from "recharts";
 import { useExercisesStore } from "../../context/ExercisesContext";
-import React from "react"; // Ensure React is imported for React.FC
+import React from "react";
 
 interface ExercisesRadarChartProps {
   chart: "1RM" | "Volume";
 }
 
-// Define props for the custom tick component (for PolarRadiusAxis)
+// Props for the custom tick component (for PolarRadiusAxis)
 interface CustomRadiusTickProps {
   x?: number;
   y?: number;
   payload?: {
     value: number | string;
-    coordinate: number; // This is the radius value for the tick
+    coordinate: number;
     index: number;
   };
   textAnchor?: "end" | "middle" | "start" | "inherit" | undefined;
@@ -39,17 +39,17 @@ const CustomRadiusTick: React.FC<CustomRadiusTickProps> = ({
 }) => {
   if (!payload || x === undefined || y === undefined) return null;
 
-  const offset = 8; // Pixels to offset the numerical label from the radial line
-  const adjustedY = y - offset; // Move label upwards (away from center for angle=90 axis)
+  const offset = 8;
+  const adjustedY = y - offset;
 
   return (
     <Text
       x={x}
       y={adjustedY}
-      textAnchor={textAnchor || "middle"} // Default to "middle" if not provided
+      textAnchor={textAnchor || "middle"}
       fill={fill}
       fontSize={fontSize}
-      dominantBaseline="middle" // Vertically centers the text
+      dominantBaseline="middle"
     >
       {payload.value}
     </Text>
@@ -69,9 +69,9 @@ const ExercisesRadarChart: React.FC<ExercisesRadarChartProps> = ({
     };
   });
 
-  // Function to format the tick labels (exercise names) on PolarAngleAxis
+  // Format the tick labels (exercise names) on PolarAngleAxis
   const formatExerciseName = (value: string) => {
-    const maxLength = 15; // Max length for exercise name
+    const maxLength = 15;
     if (value.length > maxLength) {
       return `${value.substring(0, maxLength)}...`;
     }
@@ -79,35 +79,31 @@ const ExercisesRadarChart: React.FC<ExercisesRadarChartProps> = ({
   };
 
   return (
-    // The w-full here ensures each chart takes the full width of its container
-    // for proper snapping on mobile. min-w-3xs ensures a minimum width on larger screens.
-    <div className="flex h-60 w-full min-w-3xs items-center justify-center">
+    <div className="flex h-60 w-full min-w-3xs items-center justify-center xl:h-80">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart
           cx="50%"
           cy="50%"
-          outerRadius="85%" // Reduced for more space from Angle Axis labels
+          outerRadius="85%"
           data={latestWorkoutList}
           margin={{ top: 20, right: 30, bottom: 20, left: 30 }}
         >
           <PolarGrid stroke="#757575" />
           <PolarAngleAxis
             dataKey="name"
-            tickFormatter={formatExerciseName} // Use formatter for name truncation
+            tickFormatter={formatExerciseName} // Formatter for name truncation
             tick={{
               fill: "#6b7280",
-              fontSize: 12, // Adjusted font size for angle axis
+              fontSize: 12,
               fontWeight: 500,
             }}
             baselineShift={10}
-            // Removed textAnchor and baselineShift for Angle Axis, let Recharts handle it
           />
           <PolarRadiusAxis
-            tick={<CustomRadiusTick fill="#757575" />} // Use custom tick for offset
+            tick={<CustomRadiusTick fill="#757575" />}
             axisLine={{ stroke: "#757575" }}
             angle={90}
             tickFormatter={(value) => value.toString()}
-            // Removed textAnchor and baselineShift for Radius Axis
           />
           <Radar
             name={chart === "1RM" ? "1RM" : "workoutVolume"}

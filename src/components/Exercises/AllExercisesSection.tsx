@@ -4,8 +4,8 @@ import { useExercisesStore } from "../../context/ExercisesContext";
 import ExerciseItem from "./ExerciseItem";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore from "swiper";
 import "swiper/swiper-bundle.css";
+import SwiperCore from "swiper";
 
 const AllExercisesSection: React.FC = () => {
   const { t } = useTranslation();
@@ -13,7 +13,6 @@ const AllExercisesSection: React.FC = () => {
   // Track the active slide (chart) for button styling.
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null);
-
   return (
     <div className="flex flex-col gap-2 px-2">
       <div>
@@ -23,7 +22,7 @@ const AllExercisesSection: React.FC = () => {
       <div className="flex flex-col items-center">
         {/* Buttons for the slider */}
         <div
-          className={`mb-4 flex w-full max-w-md justify-around rounded-md bg-gray-700 p-1 lg:hidden`}
+          className={`mb-4 flex w-full max-w-md justify-around rounded-md bg-gray-700 p-1 xl:hidden`}
         >
           <button
             onClick={() => swiperInstance?.slideTo(0)}
@@ -60,11 +59,15 @@ const AllExercisesSection: React.FC = () => {
               slidesPerView: 2,
               spaceBetween: 20,
               centeredSlides: false,
+              pagination: false,
+              navigation: false,
             },
             1024: {
+              slidesPerView: 2,
               spaceBetween: 30,
             },
             1280: {
+              slidesPerView: 2,
               spaceBetween: 40,
             },
           }}

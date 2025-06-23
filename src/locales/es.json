@@ -83,5 +83,6 @@
   "saveRecord?": "¿Guardar registro?",
   "howToUse": "Para empezar a usar la app solo elimina o modifica los elementos actuales y crea los tuyos propios.",
   "currentItems": "Los elementos actuales son solo para demostración.",
-  "alreadyBarbell": "Ya existe una barra con esas características."
+  "alreadyBarbell": "Ya existe una barra con esas características.",
+  "seeExercisesChart": "Ver gráfico de ejercicios"
 }

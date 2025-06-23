@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 const WelcomePage: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <main className="flex flex-col items-stretch gap-2 p-2 px-4">
+    <main className="flex flex-col items-stretch gap-2 p-2 px-4 lg:px-10 lg:py-4">
       <div className="p-2">
         <img src={gym} className="w-24" alt="Icon" />
         <h2 className="text-3xl text-pretty xl:text-4xl">

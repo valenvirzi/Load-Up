@@ -27,11 +27,18 @@ const ExercisesPage: React.FC = () => {
               const activeClass = isActive
                 ? "bg-violet-800 hover:bg-violet-800/85"
                 : "";
-              return `group flex items-center justify-center rounded-full bg-stone-700 p-1.5 transition-all duration-300 hover:bg-stone-700/85 ${activeClass}`;
+              return `group flex items-center justify-center gap-1.5 rounded-full bg-stone-700 p-1.5 transition-all duration-300 hover:bg-stone-700/85 xl:p-2 xl:px-3 ${activeClass}`;
             }}
             to={to}
           >
-            <img className="w-7" src={radarGraph} alt={t("radarGraph")} />
+            <img
+              className="w-7 xl:w-8"
+              src={radarGraph}
+              alt={t("radarGraph")}
+            />
+            <span className="hidden text-white xl:inline-block">
+              {t("seeExercisesChart")}
+            </span>
           </NavLink>
         ) : (
           <></>

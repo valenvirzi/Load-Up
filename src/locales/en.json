@@ -83,5 +83,6 @@
   "saveRecord?": "Save record?",
   "howToUse": "To start using the app just delete or modify the existing items and create your own.",
   "currentItems": "Current ones are for demonstration purposes only.",
-  "alreadyBarbell": "A barbell with that characteristics already exists."
+  "alreadyBarbell": "A barbell with that characteristics already exists.",
+  "seeExercisesChart": "See exercises chart"
 }
