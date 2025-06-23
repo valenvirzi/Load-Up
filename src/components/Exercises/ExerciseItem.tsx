@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 interface ExerciseItemProps {
   exercise: Exercise;
-  setSelectedExercise: (exercise: Exercise) => void;
+  setSelectedExercise?: (exercise: Exercise) => void;
 }
 
 const ExerciseItem: React.FC<ExerciseItemProps> = ({
@@ -71,13 +71,17 @@ const ExerciseItem: React.FC<ExerciseItemProps> = ({
         >
           <img className="w-6" src={graph} alt={t("graph")} />
         </Link>
-        <button
-          className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-2"
-          type="button"
-          onClick={() => setSelectedExercise(exercise)}
-        >
-          <img className="w-6" src={edit} alt={t("edit")} />
-        </button>
+        {setSelectedExercise ? (
+          <button
+            className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-stone-700 p-2"
+            type="button"
+            onClick={() => setSelectedExercise(exercise)}
+          >
+            <img className="w-6" src={edit} alt={t("edit")} />
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </li>
   );

@@ -8,6 +8,7 @@ import ExerciseChart from "../components/Exercises/ExerciseChart";
 import ExerciseRecordItem from "../components/Exercises/ExerciseRecordItem";
 import CreateRecordBtn from "../components/Exercises/CreateRecordBtn";
 import RecordSortSelect from "../components/Exercises/RecordSortSelect";
+import AllExercisesSection from "../components/Exercises/AllExercisesSection";
 
 const ExercisePage: React.FC = () => {
   // TODO: Componetizar funcionalidades y elementos.
@@ -31,27 +32,7 @@ const ExercisePage: React.FC = () => {
   };
 
   if (params.exerciseName === "all") {
-    return (
-      <div className="flex flex-col gap-2 px-2">
-        <div>
-          <h3 className="text-xl">{t("allExercises")}</h3>
-        </div>
-        {/* TODO: Insertar 2 gráficos de radar con un slider para mostrar cada uno:
-            * Gráfico 1:
-                - Angle Axis: exercise.name
-                - Radar datakey: 1RM más reciente de ese ejercicio.
-            * Gráfico 2:
-                - Eje X: exercise.name
-                - Radar datakey: Volumen de Entrenamiento más reciente de ese ejercicio.
-      */}
-
-        {/* TODO: Agregar una lista de elementos que contengan el desempeño más reciente de cada ejercicio con su correspondiente:
-            - Fecha
-            - 1RM
-            - Volumen de Entrenamiento
-      */}
-      </div>
-    );
+    return <AllExercisesSection />;
   }
   if (!exercise) {
     return (
